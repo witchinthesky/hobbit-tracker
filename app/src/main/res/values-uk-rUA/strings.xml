@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">hobbit-tracker</string>
+    <string name="on_boarding01_title">ВІТАЄМО В ___</string>
+    <string name="on_boarding02_title">ЛЕГКО СТВОРЮЙТЕ НОВІ ЗВИЧКИ</string>
+    <string name="on_boarding03_title">ВІДСТЕЖУЙТЕ СВІЙ ПРОГРЕС</string>
+    <string name="on_boarding04_title">ДОЄДНУЙТЕСЬ ДО ДРУЖНЬОГО КОМ\'ЮНІТІ</string>
+    <string name="next">Далі</string>
+    <string name="prev">Назад</string>
+    <string name="on_boarding01_desc">Ми можемо допомогти вам стати кращою версією себе</string>
+</resources>

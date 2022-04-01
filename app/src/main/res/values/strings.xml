@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">hobbit-tracker</string>
+    <string name="on_boarding01_title">WELCOME TO MONUMENTAL HABITS</string>
+    <string name="on_boarding02_title">CREATE NEW HABIT EASILY</string>
+    <string name="on_boarding03_title">KEEP TRACK OF YOUR PROGRESS</string>
+    <string name="on_boarding04_title">JOIN A SUPPORTIVE COMMUNITY</string>
+    <string name="on_boarding01_desc">We can help you to be a better version of yourself.</string>
+    <string name="next">Next</string>
+    <string name="prev">Previos</string>
+    <string name="get_started">Get Started</string>
+
 </resources>
