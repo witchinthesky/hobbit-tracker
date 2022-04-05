@@ -9,4 +9,12 @@
     <string name="prev">Previos</string>
     <string name="get_started">Get Started</string>
 
+
+    <!-- Facebook tokens -->
+    <string name="facebook_app_id" translatable="false">759794241593209</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb759794241593209</string>
+    <string name="facebook_client_token" translatable="false">b3e64aa31e7cdd02958dfeda6aa54116</string>
+    <!-- Google token-->
+<!--    <string name="default_web_client_id" translatable="false">413198149784-03lc0tb2lb3nofa9kq40s9ko0p4581o7.apps.googleusercontent.com</string>-->
+
 </resources>

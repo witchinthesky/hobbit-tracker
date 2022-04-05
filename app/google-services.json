@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "413198149784",
+    "project_id": "hobbit-tracker",
+    "storage_bucket": "hobbit-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413198149784:android:b4b901bf2662475e4688ed",
+        "android_client_info": {
+          "package_name": "com.example.hobbittracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413198149784-eqdgcrburvflf4ph6u94lq0k1ie99el0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hobbittracker",
+            "certificate_hash": "b91f0e61db60557d3f0d2fc80f1ed0a4569dc423"
+          }
+        },
+        {
+          "client_id": "413198149784-03lc0tb2lb3nofa9kq40s9ko0p4581o7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY7xspUJTOm7wRow1o8zsuhssTbsNlkpM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413198149784-03lc0tb2lb3nofa9kq40s9ko0p4581o7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
