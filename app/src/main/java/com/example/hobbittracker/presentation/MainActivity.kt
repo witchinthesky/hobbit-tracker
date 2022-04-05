@@ -1,8 +1,12 @@
-package com.example.hobbittracker
+package com.example.hobbittracker.presentation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.hobbittracker.data.valstore.OnBoardingStateStorage
+import com.example.hobbittracker.presentation.home.HomeActivity
+import com.example.hobbittracker.presentation.onboarding.OnBoarding
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,6 +31,9 @@ class MainActivity : AppCompatActivity() {
 
     // TODO: delete
     private fun getOnBoardingState(): Boolean {
-        return false
+        val context = this.applicationContext
+        return runBlocking {
+            OnBoardingStateStorage(context)()
+        }
     }
 }

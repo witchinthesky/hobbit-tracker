@@ -1,4 +1,4 @@
-package com.example.hobbittracker.adapter
+package com.example.hobbittracker.presentation.onboarding.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import com.example.hobbittracker.R
-import com.example.hobbittracker.model.OnBoardingData
+import com.example.hobbittracker.presentation.onboarding.model.OnBoardingData
 
 class OnBoardingViewPagerAdapter(
     private var context: Context,

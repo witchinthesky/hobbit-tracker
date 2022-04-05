@@ -1,4 +1,4 @@
-package com.example.hobbittracker
+package com.example.hobbittracker.presentation.onboarding
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,10 +6,16 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager.widget.ViewPager
-import com.example.hobbittracker.adapter.OnBoardingViewPagerAdapter
-import com.example.hobbittracker.model.OnBoardingData
+import com.example.hobbittracker.R
+import com.example.hobbittracker.data.valstore.OnBoardingStateStorage
+import com.example.hobbittracker.presentation.home.HomeActivity
+import com.example.hobbittracker.presentation.onboarding.adapter.OnBoardingViewPagerAdapter
+import com.example.hobbittracker.presentation.onboarding.model.OnBoardingData
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.util.ArrayList
 
 class OnBoarding : AppCompatActivity() {
@@ -105,11 +111,17 @@ class OnBoarding : AppCompatActivity() {
 
 
     // TODO: delete this
-    fun saveOnBoardingState(state: Boolean){
-        // do nothing
+    private fun saveOnBoardingState(state: Boolean){
+        val context = this.applicationContext
+        lifecycleScope.launch() {
+           OnBoardingStateStorage(context).save(state)
+        }
     }
 
-    fun getOnBoardingState() : Boolean {
-        return false;
+    private fun getOnBoardingState() : Boolean {
+        val context = this.applicationContext
+        return runBlocking {
+            OnBoardingStateStorage(context).load()
+        }
     }
 }
