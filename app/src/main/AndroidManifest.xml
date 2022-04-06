@@ -12,22 +12,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hobbittracker">
+
+        <!-- OnBoarding -->
         <activity
             android:name=".presentation.onboarding.OnBoarding"
             android:exported="false" />
+
+        <!-- Home -->
         <activity
             android:name=".presentation.home.HomeActivity"
             android:exported="false" />
+
+        <!-- Auth -->
+        <activity android:name=".presentation.auth.LoginActivity" />
+        <activity android:name=".presentation.auth.RegisterActivity" />
+        <activity android:name=".presentation.auth.ResetPasswordActivity" />
+
+        <!-- Main -->
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
 
         <!-- FaceBook -->

@@ -1,22 +1,21 @@
 package com.example.hobbittracker.presentation.onboarding
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager.widget.ViewPager
 import com.example.hobbittracker.R
 import com.example.hobbittracker.data.valstore.OnBoardingStateStorage
-import com.example.hobbittracker.presentation.home.HomeActivity
+import com.example.hobbittracker.presentation.MainActivity
 import com.example.hobbittracker.presentation.onboarding.adapter.OnBoardingViewPagerAdapter
 import com.example.hobbittracker.presentation.onboarding.model.OnBoardingData
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import java.util.ArrayList
 
 class OnBoarding : AppCompatActivity() {
 
@@ -33,8 +32,8 @@ class OnBoarding : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // redirect if on boarding already been viewed
-        if(getOnBoardingState()){
-            val i = Intent(applicationContext, HomeActivity::class.java)
+        if(!getOnBoardingState()){
+            val i = Intent(applicationContext, MainActivity::class.java)
             startActivity(i)
             finish()
         }
@@ -74,7 +73,7 @@ class OnBoarding : AppCompatActivity() {
         getStarted?.setOnClickListener{
 
             saveOnBoardingState(true)
-            val i = Intent(applicationContext, HomeActivity::class.java)
+            val i = Intent(applicationContext, MainActivity::class.java)
             startActivity(i)
         }
 
