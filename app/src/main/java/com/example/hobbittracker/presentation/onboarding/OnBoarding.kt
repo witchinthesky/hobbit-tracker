@@ -32,7 +32,7 @@ class OnBoarding : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // redirect if on boarding already been viewed
-        if(!getOnBoardingState()){
+        if(getOnBoardingState()){
             val i = Intent(applicationContext, MainActivity::class.java)
             startActivity(i)
             finish()
