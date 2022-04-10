@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.home.HomeActivity">
+    android:background="#FFF3E9"
+    tools:context=".presentation.home.HomeActivity"
+    android:theme="@style/Theme.Hobbittracker"
+    >
 
+
+    <com.michalsvec.singlerowcalendar.calendar.SingleRowCalendar
+        android:id="@+id/home_one_line_calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_gravity="top"
+        app:deselection="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:longPress="false"
+        app:multiSelection="false" />
 
     <Button
         android:id="@+id/btn_log_out"
@@ -15,42 +35,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_hello_text"
-        android:layout_width="99dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="64dp"
-        android:text="Hello"
-        android:textAlignment="center"
-        android:textSize="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_user_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.935" />
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/buttomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        app:fabCradleRoundedCornerRadius="50dp"
+        app:fabCradleMargin="10dp"
+        app:elevation="0dp"
 
-    <TextView
-        android:id="@+id/tv_user_email"
+        >
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:menu="@menu/bottom_menu"
+            android:background="@android:color/transparent"
+            android:layout_marginRight="20dp"
+            app:itemIconSize="40dp"
+            app:elevation="0dp"
+            app:labelVisibilityMode="unlabeled"
+            />
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="292dp"
-        android:text="Email"
-        android:textAlignment="center"
-        android:textSize="22dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_user_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="Name"
-        android:textAlignment="center"
-        android:textSize="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_user_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/add_task"
+        android:backgroundTint="@color/orange_700"
+        app:srcCompat="@drawable/ic_add_habit"
+        app:maxImageSize="19dp"
+        app:elevation="0dp"
+        app:borderWidth="0dp"
+        app:layout_anchor="@id/buttomNavigation"
+        style="@style/Theme.Hobbittracker"
+        android:contentDescription="@string/on_boarding01_desc"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

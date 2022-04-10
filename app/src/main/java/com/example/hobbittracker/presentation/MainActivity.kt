@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
                     clearTasks = true, finish = true
                 )
             // redirect if user doesn't logged
+
             else if (vm.getCurrentUser() != null) {
                 vm.startActivity(
                     this@MainActivity, HomeActivity::class.java,
