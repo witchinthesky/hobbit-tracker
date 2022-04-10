@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager.widget.ViewPager
 import com.example.hobbittracker.R
 import com.example.hobbittracker.data.valstore.OnBoardingStateStorage
+import com.example.hobbittracker.databinding.ActivityOnBoardingBinding
 import com.example.hobbittracker.presentation.MainActivity
 import com.example.hobbittracker.presentation.onboarding.adapter.OnBoardingViewPagerAdapter
 import com.example.hobbittracker.presentation.onboarding.model.OnBoardingData
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class OnBoarding : AppCompatActivity() {
+
 
     var onBoardingViewPagerAdapter : OnBoardingViewPagerAdapter? = null
     var tabLayout: TabLayout? = null
@@ -28,9 +30,13 @@ class OnBoarding : AppCompatActivity() {
     var getStarted: Button? = null
 
 
+   // private lateinit var binding: ActivityOnBoardingBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+       // binding = ActivityOnBoardingBinding.inflate(layoutInflater)
+       // val view = binding.root
         // redirect if on boarding already been viewed
         if(getOnBoardingState()){
             val i = Intent(applicationContext, MainActivity::class.java)
