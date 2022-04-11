@@ -11,29 +11,14 @@
     >
 
 
-    <com.michalsvec.singlerowcalendar.calendar.SingleRowCalendar
-        android:id="@+id/home_one_line_calendar"
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_gravity="top"
-        app:deselection="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:longPress="false"
-        app:multiSelection="false" />
 
-    <Button
-        android:id="@+id/btn_log_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Log Out"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    />
+
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/buttomNavigation"
@@ -52,7 +37,6 @@
             android:layout_height="wrap_content"
             app:menu="@menu/bottom_menu"
             android:background="@android:color/transparent"
-            android:layout_marginRight="20dp"
             app:itemIconSize="40dp"
             app:elevation="0dp"
             app:labelVisibilityMode="unlabeled"
@@ -63,7 +47,6 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:id="@+id/add_task"
         android:backgroundTint="@color/orange_700"
         app:srcCompat="@drawable/ic_add_habit"

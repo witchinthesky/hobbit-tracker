@@ -9,6 +9,7 @@
     // hightlights
     <color name="purple_700">#573353</color>
     <color name="purple_200">#AB99A9</color>
+    <color name="purple_100">#EFE0DA</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

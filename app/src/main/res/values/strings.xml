@@ -18,7 +18,7 @@
     <string name="fb_login_protocol_scheme" translatable="false">fb759794241593209</string>
     <string name="facebook_client_token" translatable="false">b3e64aa31e7cdd02958dfeda6aa54116</string>
     <!-- Google token-->
-<!--    <string name="default_web_client_id" translatable="false">413198149784-03lc0tb2lb3nofa9kq40s9ko0p4581o7.apps.googleusercontent.com</string>-->
+    <!--    <string name="default_web_client_id" translatable="false">413198149784-03lc0tb2lb3nofa9kq40s9ko0p4581o7.apps.googleusercontent.com</string>-->
 
 
     <!-- Auth: Reset password -->
@@ -54,6 +54,10 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be > 6 characters</string>
+    <string name="home_page">Home Page</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_habit">New Habit</string>
 
 
 </resources>
