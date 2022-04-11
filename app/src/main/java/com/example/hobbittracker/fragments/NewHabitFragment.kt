@@ -1,34 +1,18 @@
 package com.example.hobbittracker.fragments
 
 import android.os.Bundle
+import android.text.format.DateFormat
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.hobbittracker.R
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
+import kotlinx.android.synthetic.main.fragment_new_habit.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [NewHabitFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class NewHabitFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +22,51 @@ class NewHabitFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_new_habit, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment NewHabitFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            NewHabitFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        reminder.setOnClickListener{
+            // TODO: don`t render picker when it already rendering
+            openTimePicker()
+        }
+        isReminder.setOnClickListener{
+           // isReminder.isChecked = !(isReminder.isChecked)
+            reminder.isEnabled = isReminder.isChecked
+        }
+    }
+
+    private fun openTimePicker() {
+
+        val isSystem24Hour = DateFormat.is24HourFormat(requireContext())
+        val clockFormat = if (isSystem24Hour) TimeFormat.CLOCK_24H else TimeFormat.CLOCK_12H
+
+        // create picker
+        val picker = MaterialTimePicker.Builder()
+            .setTimeFormat(clockFormat)
+            .setHour(12)
+            .setMinute(0)
+            .setTitleText("Set Alarm")
+            .build()
+
+        picker.show(childFragmentManager, "TAG")
+
+        picker.addOnPositiveButtonClickListener {
+
+            Log.d("Alarm", "Success set alarm")
+            val h = picker.hour
+            val m = picker.minute
+            alarmTime.text = "$h:$m"
+            Log.d("Alarm", "$h:$m")
+        }
+    }
+
+    // save data for uploading to database
+    fun getHabit(){
+
+        val name = habitName.text
+        val pickedDays = day_picker.selectedDays
+        val isSetReminder = isReminder.isChecked
+        val data = alarmTime.text
+
     }
 }

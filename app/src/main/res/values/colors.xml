@@ -14,6 +14,20 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- week selector -->
+    <color name="dayPressed">@color/orange_700</color>
+    <color name="daySelected">@color/orange_700</color>
+    <color name="daySelectedTextColor">@android:color/white</color>
+    <color name="dayDeselected">#FAFAFA</color>
+    <color name="dayDeselectedTextColor">@android:color/black</color>
+
+    <!-- week selector disabled days-->
+    <color name="daySelectedAndDisabled">#43444F</color>
+    <color name="daySelectedAndDisabledTextColor">@color/daySelectedTextColor</color>
+    <color name="dayDeselectedAndDisabled">@color/dayDeselected</color>
+    <color name="dayDeselectedAndDisabledTextColor">@android:color/darker_gray</color>
+
+
 
     <!-- TODO: temp colors for auth -->
     <color name="colorPrimary">#1DA1D2</color>
