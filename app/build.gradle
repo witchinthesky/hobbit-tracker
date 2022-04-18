@@ -94,4 +94,12 @@ dependencies {
     // week picker
     implementation 'ca.antonious:materialdaypicker:0.7.4'
 
+
+    //time picker dependencies
+    implementation 'com.github.ifr0z:timepickercompact:1.0'
+    implementation 'org.conscrypt:conscrypt-android:2.2.1'
+
+    //calendar library dependencies
+    implementation "com.github.prolificinteractive:material-calendarview:2.0.1"
+
 }

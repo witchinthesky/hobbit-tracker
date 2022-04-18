@@ -16,10 +16,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_newHabitTitle"
+        android:id="@+id/tv_habitNameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/new_habit"
+        android:text="Habit Name"
         android:textColor="@android:color/black"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
 
     <EditText
         android:id="@+id/habitName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
@@ -38,7 +38,7 @@
         android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_newHabitTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_habitNameTitle" />
 
     <ca.antonious.materialdaypicker.MaterialDayPicker
         android:id="@+id/day_picker"
@@ -91,7 +91,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textPersonName"
         android:text="Tag"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/isReminder" />
@@ -102,7 +102,7 @@
         android:layout_height="50dp"
         android:layout_margin="20dp"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textPersonName"
         android:text="Color"
         app:layout_constraintStart_toStartOf="@+id/tagName"
         app:layout_constraintTop_toBottomOf="@+id/tagName" />
@@ -127,7 +127,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/button_back"
         app:layout_constraintTop_toBottomOf="@+id/endTime"
-        app:layout_constraintVertical_bias="0.1"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintVertical_bias="0.1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
