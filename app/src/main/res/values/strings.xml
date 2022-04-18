@@ -39,10 +39,10 @@
     <!-- Auth: Register -->
     <string name="registration_successful">Registration successful!</string>
     <string name="registration_failed">Registration failed</string>
-    <string name="create_account">Create Account</string>
+    <string name="create_account">Create Your Account</string>
     <string name="name">Name</string>
-    <string name="register">Register</string>
-    <string name="or_register_with">Or register with</string>
+    <string name="register">Create Account</string>
+    <string name="or_register_with">Or sign in with</string>
     <string name="already_have_an_account">Already have an account? <font color="#FFBD2A"><big><b>Login</b></big></font></string>
     <string name="log_out">Log out</string>
 
@@ -58,6 +58,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="new_habit">New Habit</string>
+    <string name="welcome_login">WELCOME TO MONUMENTAL HABITS</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="continue_with_googe">Continue with Google</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="reset_instructions">Enter your registered email below to receive password reset instruction</string>
 
 
 </resources>
