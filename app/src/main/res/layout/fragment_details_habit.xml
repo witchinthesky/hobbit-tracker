@@ -215,15 +215,16 @@
                 <com.prolificinteractive.materialcalendarview.MaterialCalendarView
                     android:id="@+id/calendarView_habitDetail"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:mcv_selectionColor="#99754F44"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mcv_selectionColor="@color/orange_700"
                     app:mcv_selectionMode="none"
                     app:mcv_showOtherDates="all"
-                    app:mcv_tileSize="match_parent" />
+                    app:mcv_tileSize="match_parent"
+                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
