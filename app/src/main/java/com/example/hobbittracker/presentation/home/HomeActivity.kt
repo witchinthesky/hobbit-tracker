@@ -4,25 +4,16 @@ import android.os.Bundle
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.Fragment
 import com.example.hobbittracker.R
 import com.example.hobbittracker.fragments.*
-import com.example.hobbittracker.presentation.MainActivity
-import com.example.hobbittracker.presentation.auth.AuthViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarMenuView
-import com.google.android.material.navigation.NavigationView
-import com.michalsvec.singlerowcalendar.*
 import com.michalsvec.singlerowcalendar.calendar.CalendarChangesObserver
 import com.michalsvec.singlerowcalendar.calendar.CalendarViewManager
 import com.michalsvec.singlerowcalendar.calendar.SingleRowCalendarAdapter
 import com.michalsvec.singlerowcalendar.selection.CalendarSelectionManager
 import com.michalsvec.singlerowcalendar.utils.DateUtils
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.android.synthetic.main.selected_calendar_item.view.*
-import org.koin.android.ext.android.inject
 import java.util.*
 
 
@@ -47,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
         // fix glitches at bottom menu
         bottomNavigationView.background = null
         bottomNavigationView.itemIconTintList = null
-        add_task.imageTintList = null
+        btn_done.imageTintList = null
 
 
         // set home fragment
@@ -75,7 +66,7 @@ class HomeActivity : AppCompatActivity() {
             true
         }
 
-        add_task.setOnClickListener {
+        btn_done.setOnClickListener {
 
             if (homeContainer.visibility == INVISIBLE){
                 // save task & change icon to add
