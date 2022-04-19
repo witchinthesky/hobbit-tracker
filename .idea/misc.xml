@@ -10,8 +10,15 @@
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/calendar_unselected_item_background.xml" value="0.245" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic__placeholder.xml" value="0.2525" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_add_habit.xml" value="0.2825" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_back_icon.xml" value="0.3035" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_community_support.xml" value="0.2585" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_comunity_selected.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_courses_selected.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_createyouraccount.xml" value="0.2995" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_email.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_facebook_logo.xml" value="0.3035" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_facebooklogo.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_forgotpassword.xml" value="0.3035" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_googleicon.xml" value="0.3035" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_gradient.xml" value="0.22" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_habits.xml" value="0.2385" />
@@ -19,11 +26,23 @@
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_home_unselected.xml" value="0.1955" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2585" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.234" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_lock.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_onboarding_selected.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_onboarding_unselected.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_person.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_progress.xml" value="0.3035" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_round_add.xml" value="0.2505" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_round_menu.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_settings_selected.xml" value="0.3035" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_settings_unselected.xml" value="0.1955" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_text_field.xml" value="0.3035" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_vectormail.xml" value="0.33" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_vectorsafe.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/ic_vectoruser.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/icon_back_arrow.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/icon_done.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/icon_forward_arrow.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/icon_settings.xml" value="0.3035" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/indicator_selector.xml" value="0.234" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/menu_home.xml" value="0.2505" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/rounded_lightblue_button.xml" value="0.3035" />
@@ -35,20 +54,20 @@
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/white_border.xml" value="0.3085" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/font/nunito.xml" value="0.38125" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_home.xml" value="0.23899102180418982" />
-        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_main.xml" value="0.30043859649122806" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_on_boarding.xml" value="0.2753623188405797" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_register.xml" value="0.5" />
-        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_reset_password.xml" value="0.75" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_reset_password.xml" value="0.33" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/content_on_boarding.xml" value="0.2753623188405797" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/fragment_comunity.xml" value="0.23899102180418982" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/fragment_dashboard.xml" value="0.23899102180418982" />
-        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/fragment_details_habit.xml" value="0.25309961522017954" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/fragment_details_habit.xml" value="0.5" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/fragment_edit_habit.xml" value="0.25309961522017954" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/fragment_first.xml" value="0.2753623188405797" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/fragment_new_habit.xml" value="0.33" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/fragment_second.xml" value="0.2753623188405797" />
-        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/fragment_settings.xml" value="0.21316033364226136" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/fragment_settings.xml" value="0.25" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/fragment_statistics.xml" value="0.21316033364226136" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/habit_item.xml" value="0.25309961522017954" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/layout_onboarding_screen.xml" value="0.25309961522017954" />
