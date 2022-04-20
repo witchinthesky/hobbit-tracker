@@ -7,6 +7,7 @@
     android:layout_height="match_parent">
 
 
+<!--
     <com.example.ticker.core.ui.Ticker
         android:id="@+id/time_picker"
         android:layout_width="300dp"
@@ -19,7 +20,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_reminder_header"
         app:minutesInterval="1"
-        app:shouldAmSelected="false" />
+        app:shouldAmSelected="true" />
+-->
+
+    <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+        android:id="@+id/time_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="270dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_reminder_header"
+
+        app:picker_itemSpacing="6dp"
+        app:picker_curvedMaxAngle="45"
+        app:picker_curved="true"
+        app:picker_selectorColor="@android:color/transparent"
+        app:picker_stepSizeHours="1"
+        app:picker_stepSizeMinutes="1"
+        app:picker_cyclic="true"
+        app:picker_dayCount="31"
+        app:picker_mustBeOnFuture="true"
+        app:picker_visibleItemCount="7"
+        />
 
     <TextView
         android:id="@+id/add_reminder_header"
@@ -57,7 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+  <!--  <Button
         android:id="@+id/btn_am"
         style='style="@style/Widget.MaterialComponents.Button.OutlinedButton"'
         android:layout_width="0dp"
@@ -70,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/time_picker"
         app:strokeWidth="0dp"
         />
-<!--        app:shapeAppearance='app:shapeAppearance="@style/HabitListTheme"'-->
+&lt;!&ndash;        app:shapeAppearance='app:shapeAppearance="@style/HabitListTheme"'&ndash;&gt;
 
     <Button
         android:id="@+id/btn_pm"
@@ -85,7 +110,7 @@
         app:layout_constraintStart_toEndOf="@+id/space2"
         app:layout_constraintTop_toBottomOf="@+id/time_picker"
         />
-<!--        app:shapeAppearance='app:shapeAppearance="@style/HabitListTheme"'-->
+&lt;!&ndash;        app:shapeAppearance='app:shapeAppearance="@style/HabitListTheme"'&ndash;&gt;
 
     <android.widget.Space
         android:id="@+id/space2"
@@ -95,5 +120,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time_picker" />
 
-
+-->
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -98,10 +98,9 @@ dependencies {
     //time picker dependencies
     implementation 'com.github.ifr0z:timepickercompact:1.0'
     implementation 'org.conscrypt:conscrypt-android:2.2.1'
+    implementation 'com.github.kshitijskumar:Ticker:1.0.0'
+    implementation 'com.github.florent37:singledateandtimepicker:2.2.7'
 
     //calendar library dependencies
-    implementation 'com.github.prolificinteractive:material-calendarview:2.0.0'
-
-    implementation 'com.github.kshitijskumar:Ticker:1.0.0'
-
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
 }
