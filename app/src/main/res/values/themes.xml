@@ -39,8 +39,8 @@
     <!-- Bottom Sheet Dialog theme -->
     <style name="bottomSheetDialogTheme" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">20dp</item>
-        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeTopRight">10dp</item>
     </style>
 
     <!-- Alarm WeekDay theme -->
