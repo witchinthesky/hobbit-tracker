@@ -1,4 +1,4 @@
-package com.example.hobbittracker.presentation.fragments
+package com.example.hobbittracker.presentation.home.fragment
 
 import android.content.DialogInterface
 import android.os.Bundle

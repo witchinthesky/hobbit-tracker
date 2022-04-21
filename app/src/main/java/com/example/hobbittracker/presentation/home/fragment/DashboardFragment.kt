@@ -1,4 +1,4 @@
-package com.example.hobbittracker.fragments
+package com.example.hobbittracker.presentation.home.fragment
 
 import android.os.Bundle
 import android.text.format.DateFormat.is24HourFormat

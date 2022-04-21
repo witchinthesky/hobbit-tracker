@@ -1,4 +1,4 @@
-package com.example.hobbittracker.fragments
+package com.example.hobbittracker.presentation.home.fragment
 
 import android.app.Activity
 import android.os.Bundle
@@ -8,14 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.hobbittracker.R
-import com.example.hobbittracker.presentation.fragments.TimePickerBottomSheet
 import com.example.hobbittracker.presentation.home.HomeService
 import com.example.hobbittracker.presentation.home.HomeViewModel
-import kotlinx.android.synthetic.main.fragment_edit_habit.*
+import kotlinx.android.synthetic.main.fragment_new_habit.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.time.LocalTime
 
-class EditHabitFragment : Fragment() {
+class NewHabitFragment : Fragment() {
 
     private var alarmTime: LocalTime? = null
 
@@ -23,13 +22,12 @@ class EditHabitFragment : Fragment() {
 
     private lateinit var act: Activity
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_habit, container, false)
+        return inflater.inflate(R.layout.fragment_new_habit, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -97,7 +95,7 @@ class EditHabitFragment : Fragment() {
 
         val habit = HomeService.mapToHabit(habitName, pickedDays, endDay, reminderTime, 0, color)
 
-        // vm.editHabit( habit)
+        vm.addHabit(habit)
 
         onEventFinish()
     }
