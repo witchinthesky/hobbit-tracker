@@ -63,6 +63,10 @@
     <string name="continue_with_googe">Continue with Google</string>
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="reset_instructions">Enter your registered email below to receive password reset instruction</string>
+    <string name="all_category">All</string>
+    <string name="category2">Diet</string>
+    <string name="category4">Career</string>
+    <string name="category5">Growh</string>
 
 
 </resources>
