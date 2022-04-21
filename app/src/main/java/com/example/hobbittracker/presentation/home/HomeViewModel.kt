@@ -30,7 +30,7 @@ class HomeViewModel(
                     }
                     is Result.Error -> {
                         _toast.value = app.getString(R.string.add_habit_failed) +
-                                result.exception.message
+                                "<br>" + result.exception.message
                     }
                     is Result.Canceled -> {
                         _toast.value = app.getString(R.string.request_canceled)
