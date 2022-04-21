@@ -12,7 +12,12 @@ import com.example.hobbittracker.domain.repository.HabitRepository
 import org.koin.dsl.module
 
 val dataModule = module {
+
     single<Storage<String, User>> {
+        AuthStorage()
+    }
+
+    single<AuthStorage> {
         AuthStorage()
     }
 
@@ -22,7 +27,7 @@ val dataModule = module {
 
     single<HabitRepository> {
         HabitRepositoryImpl(
-            authStorage = AuthStorage(),
+            authStorage = get(),
             currentUserUseCase = get()
         )
     }

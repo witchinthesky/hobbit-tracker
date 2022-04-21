@@ -1,5 +1,6 @@
 package com.example.hobbittracker.data.repository
 
+import android.util.Log
 import com.example.hobbittracker.data.extension.await
 import com.example.hobbittracker.data.storage.AuthStorage
 import com.example.hobbittracker.domain.entity.Habit
@@ -8,21 +9,27 @@ import com.example.hobbittracker.domain.usecase.auth.CurrentUserUseCase
 import com.example.hobbittracker.domain.utils.Result
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FieldValue
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 class HabitRepositoryImpl(
     private val authStorage: AuthStorage,
     private val currentUserUseCase: CurrentUserUseCase
 ) : HabitRepository {
-
+    
     companion object {
         private const val COLLECTION_NAME = "habits"
+        
+        private const val TAG = "HabitRepositoryImpl"
     }
 
-    private val collection: CollectionReference =
-        runBlocking { getCollectionInstance() }
+    private lateinit var collection: CollectionReference
 
+    init {
+        setCollection()
+    }
 
     override suspend fun getHabit(id: String): Result<Habit> {
         return try {
@@ -35,6 +42,7 @@ class HabitRepositoryImpl(
                 is Result.Canceled -> Result.Canceled(result.exception)
             }
         } catch (exception: Exception) {
+            Log.e(TAG, exception.message!!)
             Result.Error(exception)
         }
     }
@@ -50,6 +58,7 @@ class HabitRepositoryImpl(
                 is Result.Canceled -> Result.Canceled(result.exception)
             }
         } catch (exception: Exception) {
+            Log.e(TAG, exception.message!!)
             Result.Error(exception)
         }
     }
@@ -67,6 +76,7 @@ class HabitRepositoryImpl(
                 is Result.Canceled -> Result.Canceled(result.exception)
             }
         } catch (exception: Exception) {
+            Log.e(TAG, exception.message!!)
             Result.Error(exception)
         }
     }
@@ -84,6 +94,7 @@ class HabitRepositoryImpl(
                 is Result.Canceled -> Result.Canceled(result.exception)
             }
         } catch (exception: Exception) {
+            Log.e(TAG, exception.message!!)
             Result.Error(exception)
         }
     }
@@ -108,6 +119,7 @@ class HabitRepositoryImpl(
                 is Result.Canceled -> Result.Canceled(result.exception)
             }
         } catch (exception: Exception) {
+            Log.e(TAG, exception.message!!)
             Result.Error(exception)
         }
     }
@@ -121,6 +133,7 @@ class HabitRepositoryImpl(
                 is Result.Canceled -> Result.Canceled(result.exception)
             }
         } catch (exception: Exception) {
+            Log.e(TAG, exception.message!!)
             Result.Error(exception)
         }
     }
@@ -137,6 +150,7 @@ class HabitRepositoryImpl(
                 is Result.Canceled -> Result.Canceled(result.exception)
             }
         } catch (exception: Exception) {
+            Log.e(TAG, exception.message!!)
             Result.Error(exception)
         }
     }
@@ -161,15 +175,19 @@ class HabitRepositoryImpl(
                 is Result.Canceled -> Result.Canceled(result.exception)
             }
         } catch (exception: Exception) {
+            Log.e(TAG, exception.message!!)
             Result.Error(exception)
         }
     }
 
-    private suspend fun getCollectionInstance(): CollectionReference {
-        val currentUser = currentUserUseCase() ?: throw RuntimeException("User is not authorized!")
 
-        val docRoot = authStorage.collection.document(currentUser.id)
+    private fun setCollection() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val currentUser = currentUserUseCase() ?: throw RuntimeException("User is not authorized!")
 
-        return docRoot.collection(COLLECTION_NAME)
+            val docRoot = authStorage.collection.document(currentUser.id)
+
+            collection = docRoot.collection(COLLECTION_NAME)
+        }
     }
 }

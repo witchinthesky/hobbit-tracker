@@ -3,6 +3,7 @@ package com.example.hobbittracker.presentation.auth
 import android.util.Patterns
 import android.widget.TextView
 import com.example.hobbittracker.domain.utils.Result
+import com.example.hobbittracker.domain.utils.Validator
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 
 object AuthService {
@@ -11,9 +12,9 @@ object AuthService {
     private const val MIN_EMAIL_LENGTH = 6
     private const val MIN_PASSWORD_LENGTH = 4
 
+    interface AuthValidator : Validator<String> {
 
-    interface AuthValidator {
-        fun validate(data: String): Result<String>
+        override fun validate(data: String): Result<String>
     }
 
     class NameValidator : AuthValidator {
@@ -22,7 +23,7 @@ object AuthService {
 
             return when {
                 name.isEmpty() ->
-                    Result.Error(Exception("Email is empty"))
+                    Result.Error(Exception("Name is empty"))
                 name.length < MIN_NAME_LENGTH ->
                     Result.Error(Exception("Use at least $MIN_EMAIL_LENGTH characters"))
                 else ->

@@ -69,4 +69,9 @@
     <string name="category5">Growh</string>
 
 
+    <!-- HOME: Add Habit -->
+    <string name="add_habit_successful">Habit successful added!</string>
+    <string name="add_habit_failed">Habit added failed</string>
+
+
 </resources>

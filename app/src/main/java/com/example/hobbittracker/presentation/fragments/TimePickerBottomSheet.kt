@@ -45,6 +45,7 @@ class TimePickerBottomSheet(
 
     private fun setUpViews() {
         btn_cancel.setOnClickListener {
+            onCancelClickListener?.let { it()}
             dismiss()
         }
 
@@ -69,13 +70,7 @@ class TimePickerBottomSheet(
     }
 
     private fun initTimePicker() {
-        time_picker.setDisplayMinutes(true)
-        time_picker.setDisplayHours(true)
-        time_picker.setDisplayDays(false)
-        time_picker.setDisplayMonths(false)
-        time_picker.setDisplayYears(false)
-        time_picker.setDisplayDaysOfMonth(false)
-        time_picker.setDisplayMonthNumbers(false)
+//        time_picker.setIsAmPm(true)
     }
 
     class Builder(

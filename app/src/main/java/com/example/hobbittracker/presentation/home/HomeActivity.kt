@@ -1,8 +1,7 @@
 package com.example.hobbittracker.presentation.home
 
 import android.os.Bundle
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.hobbittracker.R
@@ -14,10 +13,14 @@ import com.michalsvec.singlerowcalendar.selection.CalendarSelectionManager
 import com.michalsvec.singlerowcalendar.utils.DateUtils
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.selected_calendar_item.view.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 
 class HomeActivity : AppCompatActivity() {
+    private val tag = this::class.java.simpleName
+
+    private val vm: HomeViewModel by viewModel()
 
     private val calendar = Calendar.getInstance()
     private var currentMonth = 0
@@ -32,7 +35,6 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_home)
 
         // fix glitches at bottom menu
@@ -40,26 +42,20 @@ class HomeActivity : AppCompatActivity() {
         bottomNavigationView.itemIconTintList = null
         btn_done.imageTintList = null
 
-
-        // set home fragment
-         // replaceFragment(NewHabitFragment())
-
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> {
-                    homeContainer.visibility = VISIBLE
                     replaceFragment(dashboardFragment)
                 }
                 R.id.account -> {
-                    homeContainer.visibility = INVISIBLE
-                    replaceFragment(comunityfragment)
+                    // replaceFragment(comunityfragment)
+                    // TODO: remove temp details fragment
+                    replaceFragment(DetailsHabitFragment())
                 }
                 R.id.comunity -> {
-                    homeContainer.visibility = INVISIBLE
                     replaceFragment(settingsFragment)
                 }
                 R.id.setting -> {
-                    homeContainer.visibility = INVISIBLE
                     replaceFragment(statisticsFragment)
                 }
             }
@@ -67,19 +63,47 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btn_done.setOnClickListener {
-
-            if (homeContainer.visibility == INVISIBLE){
-                // save task & change icon to add
-                val newHabitData = newHabitFragment.getHabit()
-            }
-            else {
-                // open add habit form
-                replaceFragment(newHabitFragment)
-                homeContainer.visibility = INVISIBLE
-            }
-
+            replaceFragment(newHabitFragment)
         }
 
+        vm.toast.observe(this) { message ->
+            message?.let {
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                vm.onToastShown()
+            }
+        }
+
+        initSingleRowCalendar()
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        vm.replaceFragment(supportFragmentManager, fragment)
+    }
+
+
+    // SingleRowCalendar -----------------------
+
+    private fun getFutureDatesOfCurrentMonth(): List<Date> {
+        // get all next dates of current month
+        currentMonth = calendar[Calendar.MONTH]
+        return getDates(mutableListOf())
+    }
+
+    private fun getDates(list: MutableList<Date>): List<Date> {
+        // load dates of whole month
+        calendar.set(Calendar.MONTH, currentMonth)
+        calendar.set(Calendar.DAY_OF_MONTH, 1)
+        list.add(calendar.time)
+        while (currentMonth == calendar[Calendar.MONTH]) {
+            calendar.add(Calendar.DATE, +1)
+            if (calendar[Calendar.MONTH] == currentMonth)
+                list.add(calendar.time)
+        }
+        calendar.add(Calendar.DATE, -1)
+        return list
+    }
+
+    private fun initSingleRowCalendar() {
         // Calendar for home tab
         val myCalendarViewManager = object : CalendarViewManager {
 
@@ -91,10 +115,9 @@ class HomeActivity : AppCompatActivity() {
                 // val cal = Calendar.getInstance()
                 calendar.time = date
 
-                return if(isSelected){
+                return if (isSelected) {
                     R.layout.selected_calendar_item
-                }
-                else{
+                } else {
                     R.layout.unselected_calendar_item
                 }
                 // return item layout files, which you have created
@@ -141,37 +164,5 @@ class HomeActivity : AppCompatActivity() {
             setDates(getFutureDatesOfCurrentMonth())
             init()
         }
-    }
-
-
-    private fun getFutureDatesOfCurrentMonth(): List<Date> {
-        // get all next dates of current month
-        currentMonth = calendar[Calendar.MONTH]
-        return getDates(mutableListOf())
-    }
-
-    private fun getDates(list: MutableList<Date>): List<Date> {
-        // load dates of whole month
-        calendar.set(Calendar.MONTH, currentMonth)
-        calendar.set(Calendar.DAY_OF_MONTH, 1)
-        list.add(calendar.time)
-        while (currentMonth == calendar[Calendar.MONTH]) {
-            calendar.add(Calendar.DATE, +1)
-            if (calendar[Calendar.MONTH] == currentMonth)
-                list.add(calendar.time)
-        }
-        calendar.add(Calendar.DATE, -1)
-        return list
-    }
-
-
-    private fun replaceFragment(fragment: Fragment) : Boolean{
-        if(fragment != null){
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, fragment)
-            transaction.commit()
-            return true
-        }
-        return false
     }
 }
