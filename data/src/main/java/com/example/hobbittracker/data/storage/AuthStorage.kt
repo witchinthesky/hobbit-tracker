@@ -11,12 +11,13 @@ class AuthStorage : Storage<String, User> {
         private const val USER_COLLECTION_NAME = "users"
     }
 
-    private val firestoreInstance:FirebaseFirestore = FirebaseFirestore.getInstance()
-    private val userCollection = firestoreInstance.collection(USER_COLLECTION_NAME)
+    private val firestoreInstance: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+    val collection = firestoreInstance.collection(USER_COLLECTION_NAME)
 
     override suspend fun save(key: String, data: User): Result<Void?> {
         return try {
-            userCollection.document(key).set(data).await()
+            collection.document(key).set(data).await()
         } catch (exception: Exception) {
             Result.Error(exception)
         }
@@ -25,7 +26,7 @@ class AuthStorage : Storage<String, User> {
     override suspend fun load(key: String): Result<User> {
         return try {
             when (val resultDocumentSnapshot =
-                userCollection.document(key).get().await()) {
+                collection.document(key).get().await()) {
                 is Result.Success -> {
                     val user = resultDocumentSnapshot.data.toObject(User::class.java)!!
                     Result.Success(user)
