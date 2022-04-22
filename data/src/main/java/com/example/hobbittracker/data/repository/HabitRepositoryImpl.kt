@@ -9,13 +9,7 @@ import com.example.hobbittracker.domain.usecase.auth.CurrentUserUseCase
 import com.example.hobbittracker.domain.utils.Result
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FieldValue
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.time.DayOfWeek
-import java.time.LocalDate
-import java.time.LocalTime
-import java.time.ZoneId
+import java.time.*
 import java.util.*
 
 class HabitRepositoryImpl(
@@ -29,15 +23,9 @@ class HabitRepositoryImpl(
         private const val TAG = "HabitRepositoryImpl"
     }
 
-    private lateinit var collection: CollectionReference
-
-    init {
-        setCollection()
-    }
-
     override suspend fun getHabit(id: String): Result<Habit> {
         return try {
-            when (val result = collection.document(id).get().await()) {
+            when (val result = getCollection().document(id).get().await()) {
                 is Result.Success -> {
                     val habit = result.data.toObject(FirebaseHabit::class.java)!!
                     Result.Success(mapToHabit(habit))
@@ -59,7 +47,7 @@ class HabitRepositoryImpl(
 
     override suspend fun getHabitsAll(): Result<List<Habit>> {
         return try {
-            when (val result = collection.get().await()) {
+            when (val result = getCollection().get().await()) {
                 is Result.Success -> {
                     val habits = result.data.toObjects(FirebaseHabit::class.java)
                     Result.Success(habits.map { mapToHabit(it) })
@@ -81,7 +69,7 @@ class HabitRepositoryImpl(
 
     override suspend fun getHabitsByCategory(categoryId: Int): Result<List<Habit>> {
         return try {
-            val query = collection.whereEqualTo("categoryId", categoryId)
+            val query = getCollection().whereEqualTo("categoryId", categoryId)
 
             when (val result = query.get().await()) {
                 is Result.Success -> {
@@ -105,7 +93,7 @@ class HabitRepositoryImpl(
 
     override suspend fun addHabit(habit: Habit): Result<Habit> {
         return try {
-            val doc = collection.document()
+            val doc = getCollection().document()
             val newHabit = habit.copy(id = doc.id)
 
             when (val result = doc.set(mapToFirebaseHabit(newHabit)).await()) {
@@ -127,7 +115,7 @@ class HabitRepositoryImpl(
 
     override suspend fun updateHabit(id: String, habit: Habit): Result<Void?> {
         return try {
-            val doc = collection.document(id)
+            val doc = getCollection().document(id)
 
             val newHabit = mapToFirebaseHabit(habit)
 
@@ -160,7 +148,7 @@ class HabitRepositoryImpl(
 
     override suspend fun deleteHabit(id: String): Result<Void?> {
         return try {
-            val doc = collection.document(id)
+            val doc = getCollection().document(id)
             when (val result = doc.delete().await()) {
                 is Result.Success -> Result.Success(null)
                 is Result.Error -> {
@@ -180,7 +168,7 @@ class HabitRepositoryImpl(
 
     override suspend fun setStateHabit(id: String, isComplete: Boolean): Result<Void?> {
         return try {
-            val query = collection
+            val query = getCollection()
                 .document(id)
                 .update("complete", isComplete)
 
@@ -212,7 +200,7 @@ class HabitRepositoryImpl(
                     .toInstant()
             )
 
-            val query = collection
+            val query = getCollection()
                 .document(id)
                 .update(
                     "completedDays",
@@ -237,24 +225,25 @@ class HabitRepositoryImpl(
         }
     }
 
+    private var _collection: CollectionReference? = null
+    private suspend fun getCollection(): CollectionReference {
+        _collection?.let { return it }
 
-    private fun setCollection() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val currentUser =
-                currentUserUseCase() ?: throw RuntimeException("User is not authorized!")
+        val currentUser = currentUserUseCase()
+            ?: throw RuntimeException("User is not authorized!")
 
-            val docRoot = authStorage.collection.document(currentUser.id)
+        val docRoot = authStorage.collection.document(currentUser.id)
 
-            collection = docRoot.collection(COLLECTION_NAME)
-        }
+        _collection = docRoot.collection(COLLECTION_NAME)
+        return _collection!!
     }
 
 
     private data class FirebaseHabit(
         val id: String = "",
-        val name: String,
-        val pickedDays: List<DayOfWeek>,
-        val endDay: Date,
+        val name: String = "",
+        val pickedDays: List<DayOfWeek> = listOf(),
+        val endDay: Date = Date(),
         val reminderTime: Date? = null,
         val categoryId: Int = 0,
         val color: String? = null,
@@ -279,7 +268,7 @@ class HabitRepositoryImpl(
 
         val reminderTime = habit.reminderTime?.let {
             Date.from(
-                it.atDate(LocalDate.of(1970,1,1))
+                it.atDate(LocalDate.of(1970, 1, 1))
                     .atZone(ZoneId.systemDefault())
                     .toInstant()
             )
@@ -300,18 +289,25 @@ class HabitRepositoryImpl(
 
 
     private fun mapToHabit(habit: FirebaseHabit): Habit {
-        val endDay = LocalDate.from(
-            habit.endDay.toInstant()
-        )
+
+        val zonedDate = fun(date: Date): ZonedDateTime =
+            date.toInstant().atZone(ZoneId.systemDefault())
+
+        val getLocalDate = fun(date: Date): LocalDate =
+            zonedDate(date).toLocalDate()
+
+        val getLocalTime = fun(date: Date): LocalTime =
+            zonedDate(date).toLocalTime()
+
+
+        val endDay = getLocalDate(habit.endDay)
 
         val completedDays: List<LocalDate> = habit.completedDays.map {
-            LocalDate.from(
-                habit.endDay.toInstant()
-            )
+            getLocalDate(it)
         }
 
         val reminderTime = habit.reminderTime?.let {
-            LocalTime.from(it.toInstant())
+            getLocalTime(it)
         }
 
         return Habit(

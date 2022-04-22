@@ -73,5 +73,14 @@
     <string name="add_habit_successful">Habit successful added!</string>
     <string name="add_habit_failed">Habit added failed</string>
 
+    <!-- HOME: Habit List View -->
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+
+    <!-- HOME: Dashboard Fragment -->
+    <string name="categories_loading_failed">Failed loading categories</string>
+    <string name="habits_loading_failed">Failed loading habits</string>
+
+
 
 </resources>

@@ -132,7 +132,7 @@ object HomeService {
     ): Habit = Habit(
         name = name,
         pickedDays = pickedDays.map {
-            DayOfWeek.of(it.ordinal)
+            DayOfWeek.valueOf(it.name)
         },
         endDay = LocalDate.parse(
             endDay,

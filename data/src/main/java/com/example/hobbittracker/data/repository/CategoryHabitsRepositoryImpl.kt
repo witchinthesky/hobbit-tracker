@@ -1,5 +1,6 @@
 package com.example.hobbittracker.data.repository
 
+import android.util.Log
 import com.example.hobbittracker.data.extension.await
 import com.example.hobbittracker.domain.entity.CategoryHabits
 import com.example.hobbittracker.domain.repository.CategoryHabitsRepository
@@ -10,6 +11,7 @@ class CategoryHabitsRepositoryImpl : CategoryHabitsRepository {
 
     companion object {
         private const val COLLECTION_NAME = "categories"
+        private const val TAG = "CategoryHabitsRepositoryImpl"
     }
 
     private val firestoreInstance: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -17,17 +19,24 @@ class CategoryHabitsRepositoryImpl : CategoryHabitsRepository {
 
     override suspend fun getCategory(id: Int): Result<CategoryHabits> {
         return try {
-            when (val resultDocumentSnapshot =
+            when (val result =
                 collection.document(id.toString()).get().await()) {
                 is Result.Success -> {
                     val category =
-                        resultDocumentSnapshot.data.toObject(CategoryHabits::class.java)!!
+                        result.data.toObject(CategoryHabits::class.java)!!
                     Result.Success(category)
                 }
-                is Result.Error -> Result.Error(resultDocumentSnapshot.exception)
-                is Result.Canceled -> Result.Canceled(resultDocumentSnapshot.exception)
+                is Result.Error -> {
+                    Log.e(TAG, result.exception.message.toString())
+                    Result.Error(result.exception)
+                }
+                is Result.Canceled -> {
+                    Log.w(TAG, result.exception?.message ?: "Habit Request Canceled!")
+                    Result.Canceled(result.exception)
+                }
             }
         } catch (exception: Exception) {
+            Log.e(TAG, exception.message.toString())
             Result.Error(exception)
         }
     }
@@ -40,10 +49,17 @@ class CategoryHabitsRepositoryImpl : CategoryHabitsRepository {
                     val cats = result.data.toObjects(CategoryHabits::class.java)
                     Result.Success(cats)
                 }
-                is Result.Error -> Result.Error(result.exception)
-                is Result.Canceled -> Result.Canceled(result.exception)
+                is Result.Error -> {
+                    Log.e(TAG, result.exception.message.toString())
+                    Result.Error(result.exception)
+                }
+                is Result.Canceled -> {
+                    Log.w(TAG, result.exception?.message ?: "Habit Request Canceled!")
+                    Result.Canceled(result.exception)
+                }
             }
         } catch (exception: Exception) {
+            Log.e(TAG, exception.message.toString())
             Result.Error(exception)
         }
     }
@@ -61,10 +77,17 @@ class CategoryHabitsRepositoryImpl : CategoryHabitsRepository {
 
             when (val result = documentQuery.await()) {
                 is Result.Success -> Result.Success(null)
-                is Result.Error -> Result.Error(result.exception)
-                is Result.Canceled -> Result.Canceled(result.exception)
+                is Result.Error -> {
+                    Log.e(TAG, result.exception.message.toString())
+                    Result.Error(result.exception)
+                }
+                is Result.Canceled -> {
+                    Log.w(TAG, result.exception?.message ?: "Habit Request Canceled!")
+                    Result.Canceled(result.exception)
+                }
             }
         } catch (exception: Exception) {
+            Log.e(TAG, exception.message.toString())
             Result.Error(exception)
         }
     }

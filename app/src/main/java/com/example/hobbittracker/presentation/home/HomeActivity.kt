@@ -73,7 +73,13 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-        initSingleRowCalendar()
+        vm.pullCategoriesAll()
+
+        vm.pullHabitsAll()
+
+        replaceFragment(dashboardFragment)
+
+        // initSingleRowCalendar()
     }
 
     private fun replaceFragment(fragment: Fragment) {

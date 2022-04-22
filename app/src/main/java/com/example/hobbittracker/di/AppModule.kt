@@ -22,7 +22,10 @@ val appModule = module {
     viewModel<HomeViewModel> {
         HomeViewModel(
             app = get(),
-            addHabitUseCase = get()
+            getCategoriesAllUseCase = get(),
+            addHabitUseCase = get(),
+            getHabitsAllUseCase = get(),
+            getHabitsByCategoryUseCase = get()
         )
     }
 }
