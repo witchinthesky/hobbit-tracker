@@ -27,7 +27,9 @@ val appModule = module {
             getHabitsAllUseCase = get(),
             getHabitsByCategoryUseCase = get(),
             updateHabitUseCase = get(),
-            deleteHabitUseCase = get()
+            deleteHabitUseCase = get(),
+            setStateDayHabitUseCase = get(),
+            setStateHabitUseCase = get()
         )
     }
 }

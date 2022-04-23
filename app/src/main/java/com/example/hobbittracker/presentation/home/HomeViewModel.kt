@@ -12,6 +12,7 @@ import com.example.hobbittracker.domain.usecase.habit.*
 import com.example.hobbittracker.domain.utils.Result
 import com.example.hobbittracker.presentation.BaseViewModel
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 
 class HomeViewModel(
     private val app: Application,
@@ -20,10 +21,12 @@ class HomeViewModel(
     private val getHabitsAllUseCase: GetHabitsAllUseCase,
     private val getHabitsByCategoryUseCase: GetHabitsByCategoryUseCase,
     private val updateHabitUseCase: UpdateHabitUseCase,
-    private val deleteHabitUseCase: DeleteHabitUseCase
+    private val deleteHabitUseCase: DeleteHabitUseCase,
+    private val setStateDayHabitUseCase: SetStateDayHabitUseCase,
+    private val setStateHabitUseCase: SetStateHabitUseCase
 ) : BaseViewModel(app) {
 
-
+    
     var habits: MutableList<Habit> = mutableListOf()
         private set
     private val _habitsMLD = MutableLiveData<Long>(0L)
@@ -188,4 +191,98 @@ class HomeViewModel(
             }
         }
     }
+
+    fun completeHabitDay(day: LocalDate) {
+        launchDataLoad {
+            viewModelScope.launch {
+                currentHabitPositionMLD.value?.let {
+                    when (val result = setStateDayHabitUseCase(
+                        habits[it].id, day, true
+                    )) {
+                        is Result.Success -> {
+                            habits[it].completedDays.add(day)
+                            _toast.value = app.getString(R.string.habit_today_completed)
+                        }
+                        is Result.Error -> {
+                            _toast.value = result.exception.message
+                        }
+                        is Result.Canceled -> {
+                            _toast.value = app.getString(R.string.request_canceled)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fun missedHabitDay(day: LocalDate) {
+        launchDataLoad {
+            viewModelScope.launch {
+                currentHabitPositionMLD.value?.let {
+                    when (val result = setStateDayHabitUseCase(
+                        habits[it].id, day, false
+                    )) {
+                        is Result.Success -> {
+                            habits[it].completedDays.remove(day)
+                            _toast.value = app.getString(R.string.habit_today_missed)
+                        }
+                        is Result.Error -> {
+                            _toast.value = result.exception.message
+                        }
+                        is Result.Canceled -> {
+                            _toast.value = app.getString(R.string.request_canceled)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fun completeHabit() {
+        launchDataLoad {
+            viewModelScope.launch {
+                currentHabitPositionMLD.value?.let {
+                    when (val result = setStateHabitUseCase(
+                        habits[it].id, true
+                    )) {
+                        is Result.Success -> {
+                            habits[it].isComplete = true
+                            _toast.value = app.getString(R.string.habit_completed)
+                        }
+                        is Result.Error -> {
+                            _toast.value = result.exception.message
+                        }
+                        is Result.Canceled -> {
+                            _toast.value = app.getString(R.string.request_canceled)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fun missedHabit() {
+        launchDataLoad {
+            viewModelScope.launch {
+                currentHabitPositionMLD.value?.let {
+                    when (val result = setStateHabitUseCase(
+                        habits[it].id, true
+                    )) {
+                        is Result.Success -> {
+                            habits[it].isComplete = false
+                            _toast.value = app.getString(R.string.habit_missed)
+                        }
+                        is Result.Error -> {
+                            _toast.value = result.exception.message
+                        }
+                        is Result.Canceled -> {
+                            _toast.value = app.getString(R.string.request_canceled)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
 }
