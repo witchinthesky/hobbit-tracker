@@ -1,12 +1,12 @@
 package com.example.hobbittracker.presentation.home.fragment
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.example.hobbittracker.R
 import com.example.hobbittracker.presentation.home.HomeService
 import com.example.hobbittracker.presentation.home.HomeViewModel
@@ -20,7 +20,7 @@ class NewHabitFragment : Fragment() {
 
     private val vm: HomeViewModel by sharedViewModel<HomeViewModel>()
 
-    private lateinit var act: Activity
+    private lateinit var act: FragmentActivity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +56,7 @@ class NewHabitFragment : Fragment() {
     }
 
     private fun onEventFinish() {
-        vm.replaceFragment(parentFragmentManager, DashboardFragment())
+        vm.replaceFragment(act.supportFragmentManager, DashboardFragment())
     }
 
     private fun onTimePicked(time: LocalTime) {

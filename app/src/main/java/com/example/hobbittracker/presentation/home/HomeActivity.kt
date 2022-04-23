@@ -26,12 +26,11 @@ class HomeActivity : AppCompatActivity() {
     private var currentMonth = 0
 
 
+    // some fragments are better to be created new so that they are not saved
     // creates fragments for bottom menu navigation
-    private val dashboardFragment = DashboardFragment()
     private val comunityfragment = ComunityFragment()
     private val settingsFragment = SettingsFragment()
     private val statisticsFragment = StatisticsFragment()
-    private val newHabitFragment = NewHabitFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +44,7 @@ class HomeActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> {
-                    replaceFragment(dashboardFragment)
+                    replaceFragment(DashboardFragment())
                 }
                 R.id.account -> {
                     // replaceFragment(comunityfragment)
@@ -63,7 +62,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btn_done.setOnClickListener {
-            replaceFragment(newHabitFragment)
+            replaceFragment(NewHabitFragment())
         }
 
         vm.toast.observe(this) { message ->
@@ -75,9 +74,7 @@ class HomeActivity : AppCompatActivity() {
 
         vm.pullCategoriesAll()
 
-        vm.pullHabitsAll()
-
-        replaceFragment(dashboardFragment)
+        replaceFragment(DashboardFragment())
 
         // initSingleRowCalendar()
     }

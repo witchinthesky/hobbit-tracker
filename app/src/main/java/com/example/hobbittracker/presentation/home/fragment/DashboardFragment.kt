@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hobbittracker.R
 import com.example.hobbittracker.domain.entity.CategoryHabits
 import com.example.hobbittracker.domain.entity.Habit
-import com.example.hobbittracker.domain.utils.sortedlist.SortedMutableList
 import com.example.hobbittracker.presentation.home.HomeViewModel
 import com.example.hobbittracker.presentation.home.adapter.HabitListAdapter
 import kotlinx.android.synthetic.main.fragment_dashboard.*
@@ -40,26 +39,28 @@ class DashboardFragment : Fragment() {
 
         initAdapter()
 
-        initCategories()
-
         vm.habitsMLD.observe(viewLifecycleOwner) {
-            updateAdapter(it)
+            updateAdapter(vm.habits)
         }
 
+        initCategories()
+
         vm.categoriesMLD.observe(viewLifecycleOwner) {
-            updateCategories(it)
+            updateCategories(vm.categories)
         }
     }
 
     private fun initAdapter() {
-        rvAdapter.habits = vm.habitsMLD.value!!
         rvAdapter.setOnDetailsClick { _, index ->
             vm.currentHabitPositionMLD.value = index
-            vm.replaceFragment(parentFragmentManager, detailsFragment)
+            vm.replaceFragment(requireActivity().supportFragmentManager, detailsFragment)
         }
     }
 
     private fun initCategories() {
+        categoryPicker.check(R.id.category_all)
+        vm.pullHabitsAll()
+
         categoryPicker.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if(isChecked){
                 when(checkedId){
@@ -79,7 +80,7 @@ class DashboardFragment : Fragment() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun updateAdapter(habits: SortedMutableList<Habit>) {
+    private fun updateAdapter(habits: List<Habit>) {
         rvAdapter.habits = habits
         rvAdapter.notifyDataSetChanged()
     }

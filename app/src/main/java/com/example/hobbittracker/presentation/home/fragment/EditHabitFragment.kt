@@ -1,18 +1,20 @@
 package com.example.hobbittracker.presentation.home.fragment
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import ca.antonious.materialdaypicker.MaterialDayPicker
 import com.example.hobbittracker.R
+import com.example.hobbittracker.domain.entity.Habit
 import com.example.hobbittracker.presentation.home.HomeService
 import com.example.hobbittracker.presentation.home.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_edit_habit.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 class EditHabitFragment : Fragment() {
 
@@ -20,8 +22,9 @@ class EditHabitFragment : Fragment() {
 
     private val vm: HomeViewModel by sharedViewModel<HomeViewModel>()
 
-    private lateinit var act: Activity
+    private lateinit var act: FragmentActivity
 
+    private lateinit var currentHabit: Habit
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +38,10 @@ class EditHabitFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         act = this.requireActivity()
+
+        setCurrentHabit()
+
+        initFields()
 
         btn_cancel.setOnClickListener {
             onEventFinish()
@@ -56,13 +63,52 @@ class EditHabitFragment : Fragment() {
         }
     }
 
+    private fun setCurrentHabit() {
+        val index = vm.currentHabitPositionMLD.value
+        if (index != null)
+            currentHabit = vm.habits[index]
+        else onEventFinish()
+    }
+
+    private fun initFields() {
+        tv_habitNameTitle.text = currentHabit.name
+
+        habitName.setText(currentHabit.name)
+
+        day_picker.setSelectedDays(
+            currentHabit.pickedDays.map {
+                MaterialDayPicker.Weekday.valueOf(
+                    it.name
+                )
+            }
+        )
+
+        currentHabit.reminderTime?.let() {
+            switcher.isChecked = true
+            onTimePicked(it)
+        }
+
+        tagName.setText(
+            vm.categories[currentHabit.categoryId].name
+        )
+
+        colorName.setText(
+            currentHabit.color
+        )
+
+        endTime.setText(
+            currentHabit.endDay.format(
+                DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            )
+        )
+    }
+
     private fun onEventFinish() {
-        vm.replaceFragment(parentFragmentManager, DashboardFragment())
+        vm.replaceFragment(act.supportFragmentManager, DetailsHabitFragment())
     }
 
     private fun onTimePicked(time: LocalTime) {
         alarmTime = time
-        Toast.makeText(this.context, "$time", Toast.LENGTH_LONG).show()
         textView20.text = time.toString()
     }
 
@@ -94,9 +140,9 @@ class EditHabitFragment : Fragment() {
         val color = colorName.text.toString()
         val endDay = endTime.text.toString()
 
-        val habit = HomeService.mapToHabit(habitName, pickedDays, endDay, reminderTime, 0, color)
+        val habit = HomeService.mapToHabit(habitName, pickedDays, endDay, reminderTime, 0, color, id = currentHabit.id)
 
-        // vm.editHabit( habit)
+        vm.editHabit(habit)
 
         onEventFinish()
     }

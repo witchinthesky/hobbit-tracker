@@ -16,8 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView21"
         app:selectionRequired="true"
-        app:singleSelection="true"
-        app:checkedButton="@id/category_all">
+        app:singleSelection="true">
 
         <Button
             android:id="@+id/category_all"

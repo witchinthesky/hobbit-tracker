@@ -71,7 +71,7 @@
 
     <!-- HOME: Add Habit -->
     <string name="add_habit_successful">Habit successful added!</string>
-    <string name="add_habit_failed">Habit added failed</string>
+    <string name="add_habit_failed">Habit added failed!</string>
 
     <!-- HOME: Habit List View -->
     <string name="today">Today</string>
@@ -80,6 +80,12 @@
     <!-- HOME: Dashboard Fragment -->
     <string name="categories_loading_failed">Failed loading categories</string>
     <string name="habits_loading_failed">Failed loading habits</string>
+
+    <!-- HOME: Edit Fragment -->
+    <string name="habit_update_failed">Habit updated failed!</string>
+    <string name="habit_update_successful">Habit successful updated!</string>
+    <string name="habit_delete_failed">Habit deleted failed!</string>
+    <string name="habit_delete_successful">Habit successful deleted!</string>
 
 
 
