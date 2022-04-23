@@ -318,7 +318,7 @@ class HabitRepositoryImpl(
             reminderTime = reminderTime,
             categoryId = habit.categoryId,
             color = habit.color,
-            completedDays = completedDays,
+            completedDays = completedDays.toMutableList(),
             isComplete = habit.isComplete
         )
     }

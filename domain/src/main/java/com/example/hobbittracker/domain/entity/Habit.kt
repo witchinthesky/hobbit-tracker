@@ -12,9 +12,9 @@ data class Habit(
     val reminderTime: LocalTime? = null,
     val categoryId: Int = 0,
     val color: String? = null,
-    val completedDays: List<LocalDate> = listOf(),
+    val completedDays: MutableList<LocalDate> = mutableListOf(),
     @field:JvmField
-    val isComplete: Boolean? = null
+    var isComplete: Boolean? = null
 ) : Comparable<Habit> {
 
     override fun compareTo(other: Habit): Int {

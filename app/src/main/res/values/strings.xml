@@ -87,6 +87,12 @@
     <string name="habit_delete_failed">Habit deleted failed!</string>
     <string name="habit_delete_successful">Habit successful deleted!</string>
 
+    <!-- HOME: Details Fragment -->
+    <string name="habit_today_completed">Today habit is completed!</string>
+    <string name="habit_today_missed">Today habit is missed!</string>
+    <string name="habit_completed">Habit is completed!</string>
+    <string name="habit_missed">Habit is missed!</string>
+
 
 
 </resources>
