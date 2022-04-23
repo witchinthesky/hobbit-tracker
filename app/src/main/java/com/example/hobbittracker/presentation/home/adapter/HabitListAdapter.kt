@@ -1,7 +1,6 @@
 package com.example.hobbittracker.presentation.home.adapter
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import ca.antonious.materialdaypicker.MaterialDayPicker
 import com.example.hobbittracker.R
 import com.example.hobbittracker.domain.entity.Habit
-import com.example.hobbittracker.domain.utils.sortedlist.SortedMutableList
 import kotlinx.android.synthetic.main.item_habit.view.*
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -17,10 +15,40 @@ import java.time.LocalDate
 class HabitListAdapter(private val context: Context?) :
     RecyclerView.Adapter<HabitListAdapter.HabitListViewHolder>() {
 
-    lateinit var habits: SortedMutableList<Habit>
+    lateinit var habits: List<Habit>
 
     private var onDetailsClick: (Habit, Int) -> Unit = fun(_, _) {}
 
+/*    private var habits = SortedList(Habit::class.java,
+        object : SortedList.Callback<Habit>() {
+            override fun compare(o1: Habit, o2: Habit): Int {
+                return o1.compareTo(o2)
+            }
+
+            override fun onInserted(position: Int, count: Int) {
+                notifyItemRangeInserted(position, count)
+            }
+
+            override fun onRemoved(position: Int, count: Int) {
+                notifyItemRangeRemoved(position, count)
+            }
+
+            override fun onMoved(fromPosition: Int, toPosition: Int) {
+                notifyItemMoved(fromPosition, toPosition)
+            }
+
+            override fun onChanged(position: Int, count: Int) {
+                notifyItemRangeChanged(position, count)
+            }
+
+            override fun areContentsTheSame(oldItem: Habit, newItem: Habit): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areItemsTheSame(item1: Habit, item2: Habit): Boolean {
+                return item1.id == item2.id
+            }
+        })*/
 
     inner class HabitListViewHolder(
         itemView: View,
@@ -33,31 +61,33 @@ class HabitListAdapter(private val context: Context?) :
         fun bind(data: Habit, position: Int) {
             itemView.tv_habitName.text = data.name
 
-            for (i in data.pickedDays) {
-                itemView.day_picker.selectDay(MaterialDayPicker.Weekday.valueOf(i.name))
+            val pickDays = data.pickedDays.map {
+                MaterialDayPicker.Weekday.valueOf(it.name)
+            }
+            itemView.day_picker.clearSelection()
+            itemView.day_picker.setSelectedDays(pickDays)
 
-                if (i == today) {
+            when {
+                today in data.pickedDays -> {
                     itemView.textView_isToday.text =
                         context?.resources?.getString(R.string.today) ?: "Today"
-                    itemView.textView_isToday.visibility = View.VISIBLE
-                    itemView.imageView_dot.visibility = View.VISIBLE
-                } else {
-                    if (i == tomorrow) {
-                        itemView.textView_isToday.text =
-                            context?.resources?.getString(R.string.today) ?: "Tomorrow"
-                        itemView.textView_isToday.visibility = View.VISIBLE
-                        itemView.imageView_dot.visibility = View.INVISIBLE
-                    } else {
-                        itemView.textView_isToday.visibility = View.INVISIBLE
-                        itemView.imageView_dot.visibility = View.INVISIBLE
-                    }
-                    itemView.textView_isToday.setBackgroundColor(Color.parseColor("#CCFFFFFF"))
-                    itemView.button_habit.setBackgroundColor(Color.parseColor("#CCFFFFFF"))
+                }
+                tomorrow in data.pickedDays -> {
+                    itemView.textView_isToday.text =
+                        context?.resources?.getString(R.string.tomorrow) ?: "Tomorrow"
+                    itemView.imageView_dot.visibility = View.INVISIBLE
+                }
+                else -> {
+                    itemView.textView_isToday.visibility = View.INVISIBLE
+                    itemView.imageView_dot.visibility = View.INVISIBLE
                 }
             }
 
             itemView.day_picker.setDayPressedListener { day, isSelected ->
-                if (isSelected) itemView.day_picker.deselectDay(day)
+                if (!pickDays.contains(day))
+                    itemView.day_picker.deselectDay(day)
+                else if (!isSelected)
+                    itemView.day_picker.selectDay(day)
             }
 
             itemView.button_habit.setOnClickListener {
@@ -67,7 +97,10 @@ class HabitListAdapter(private val context: Context?) :
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitListViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): HabitListAdapter.HabitListViewHolder {
         val itemView = LayoutInflater.from(context).inflate(R.layout.item_habit, parent, false)
         return HabitListViewHolder(itemView, this::onDetailsClick.get())
     }
@@ -82,4 +115,20 @@ class HabitListAdapter(private val context: Context?) :
     fun setOnDetailsClick(callback: (Habit, Int) -> Unit) {
         onDetailsClick = callback
     }
+
+/*    fun addList(list: List<Habit>) {
+        habits.beginBatchedUpdates()
+        list.forEach { habits.add(it) }
+        habits.endBatchedUpdates()
+    }
+
+    operator fun get(position: Int): Habit {
+        return habits.get(position)
+    }
+
+    fun clearList() {
+        habits.beginBatchedUpdates()
+        habits.clear()
+        habits.endBatchedUpdates()
+    }*/
 }

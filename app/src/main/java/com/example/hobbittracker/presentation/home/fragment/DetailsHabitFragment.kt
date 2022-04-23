@@ -30,16 +30,13 @@ class DetailsHabitFragment : Fragment() {
         }
 
         btn_edit.setOnClickListener {
-            vm.replaceFragment(this.parentFragmentManager, EditHabitFragment())
+            vm.replaceFragment(requireActivity().supportFragmentManager, EditHabitFragment())
         }
     }
 
 
     private fun onEventFinish() {
-        vm.replaceFragment(this.parentFragmentManager, DashboardFragment())
+        vm.replaceFragment(requireActivity().supportFragmentManager, DashboardFragment())
     }
 
-    private fun onEventDone() {
-        onEventFinish()
-    }
 }
