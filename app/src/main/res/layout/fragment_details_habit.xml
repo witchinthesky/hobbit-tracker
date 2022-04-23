@@ -13,7 +13,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -75,35 +76,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Average streak (days)"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                tools:layout_editor_absoluteX="30dp"
-                tools:layout_editor_absoluteY="680dp" />
-
-            <TextView
-                android:id="@+id/tv_completionRate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="rate"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                tools:layout_editor_absoluteX="350dp"
-                tools:layout_editor_absoluteY="728dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Current streak (days)"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                tools:layout_editor_absoluteX="30dp"
-                tools:layout_editor_absoluteY="632dp" />
-
-            <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -115,91 +87,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/view_bar" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Longest streak (days)"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                tools:layout_editor_absoluteX="30dp"
-                tools:layout_editor_absoluteY="586dp" />
-
-            <Button
-                android:id="@+id/btn_markAsMissed"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:backgroundTint="@color/white"
-                android:gravity="center"
-                android:paddingVertical="20dp"
-                android:text="Mark Habit as Missed"
-                android:textColor="@android:color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:shapeAppearance="@style/HabitListTheme"
-                app:strokeWidth="0dp"
-                tools:layout_editor_absoluteY="861dp" />
-
-            <Button
-                android:id="@+id/btn_markAsComplete"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:backgroundTint="@color/orange_700"
-                android:gravity="center"
-                android:paddingVertical="20dp"
-                android:text="Mark Habit as Complete"
-                android:textColor="@android:color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:shapeAppearance="@style/HabitListTheme"
-                app:strokeWidth="0dp"
-                tools:layout_editor_absoluteY="789dp" />
-
-            <TextView
-                android:id="@+id/tv_currentStreak"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="days"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                tools:layout_editor_absoluteX="341dp"
-                tools:layout_editor_absoluteY="632dp" />
-
-            <TextView
-                android:id="@+id/tv_averageStreak"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="days"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                tools:layout_editor_absoluteX="341dp"
-                tools:layout_editor_absoluteY="680dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Completion Rate (%)"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                app:layout_constraintTop_toBottomOf="@+id/textView6"
-                tools:layout_editor_absoluteX="30dp" />
-
-            <TextView
-                android:id="@+id/tv_longestStreak"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="90dp"
-                android:text="days"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                app:layout_constraintTop_toBottomOf="@+id/layout_calendar"
-                tools:layout_editor_absoluteX="341dp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_calendar"
@@ -225,10 +112,275 @@
                     app:mcv_selectionColor="@color/orange_700"
                     app:mcv_selectionMode="none"
                     app:mcv_showOtherDates="all"
-                    app:mcv_tileSize="match_parent"
-                     />
+                    app:mcv_tileSize="match_parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/statsLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintBottom_toTopOf="@id/btn_markAsComplete"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/statsLeftButtom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:background="@drawable/b_roundcornerbottomleft"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/statsRightTop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/statsLeftTop">
+
+                    <TextView
+                        android:id="@+id/tv_completionRate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="rate"
+                        android:textColor="@android:color/black"
+                        android:textSize="24sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/stat4desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="Competition Rate"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_completionRate" />
+
+                    <ImageView
+                        android:id="@+id/stat4img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/button_back"
+                        android:backgroundTint="#3329319F"
+                        android:padding="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_ratevector" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/statsRightButtom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/b_roundcornerbottomright"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/statsLeftTop"
+                    app:layout_constraintTop_toBottomOf="@+id/statsRightTop">
+
+                    <TextView
+                        android:id="@+id/tv_averageStreak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="days"
+                        android:textColor="@android:color/black"
+                        android:textSize="24sp"
+                        app:layout_constraintStart_toStartOf="@id/statsRightButtom"
+                        app:layout_constraintTop_toTopOf="@id/statsRightButtom" />
+
+                    <TextView
+                        android:id="@+id/stat3desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="Average Score"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_averageStreak" />
+
+                    <ImageView
+                        android:id="@+id/stat3img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/button_back"
+                        android:backgroundTint="#33973456"
+                        android:padding="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_leavevector" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/statsRightTop"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/b_roundcornertopright"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintBottom_toTopOf="@+id/statsRightButtom"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/spacer"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_currentStreak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="days"
+                        android:textColor="@android:color/black"
+                        android:textSize="24sp"
+                        app:layout_constraintStart_toStartOf="@id/statsRightTop"
+                        app:layout_constraintTop_toTopOf="@id/statsRightTop" />
+
+                    <TextView
+                        android:id="@+id/stat2desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="Current Streak"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_currentStreak" />
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/button_back"
+                        android:backgroundTint="#33F65B4E"
+                        android:padding="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_starvector" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/statsLeftTop"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/b_roundcornertopleft"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintBottom_toTopOf="@+id/statsRightButtom"
+                    app:layout_constraintEnd_toStartOf="@+id/spacer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_longestStreak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="days"
+                        android:textColor="@android:color/black"
+                        android:textSize="24sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="Longest Streak"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_longestStreak" />
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="46dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/button_back"
+                        android:backgroundTint="#33FDA758"
+                        android:padding="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_firevector" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Space
+                    android:id="@+id/spacer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/statsLayout"
+                    app:layout_constraintRight_toRightOf="@id/statsLayout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/btn_markAsMissed"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="200dp"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:paddingVertical="20dp"
+                android:text="Mark Habit as Missed"
+                android:textColor="@android:color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_markAsComplete"
+                app:shapeAppearance="@style/HabitListTheme"
+                app:strokeWidth="0dp" />
+
+            <Button
+                android:id="@+id/btn_markAsComplete"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:backgroundTint="@color/orange_700"
+                android:gravity="center"
+                android:paddingVertical="20dp"
+                android:text="Mark Habit as Complete"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/statsLayout"
+                app:shapeAppearance="@style/HabitListTheme"
+                app:strokeWidth="0dp" />
 
 
             <!--    +++++++++++++++++++++++++++ -->
