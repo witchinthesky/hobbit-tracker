@@ -9,6 +9,7 @@ data class Habit(
     val name: String,
     val pickedDays: List<DayOfWeek>,
     val endDay: LocalDate,
+    val createdDay: LocalDate,
     val reminderTime: LocalTime? = null,
     val categoryId: Int = 0,
     val color: String? = null,

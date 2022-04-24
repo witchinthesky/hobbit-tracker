@@ -244,6 +244,7 @@ class HabitRepositoryImpl(
         val name: String = "",
         val pickedDays: List<DayOfWeek> = listOf(),
         val endDay: Date = Date(),
+        val createdDay: Date = Date(),
         val reminderTime: Date? = null,
         val categoryId: Int = 0,
         val color: String? = null,
@@ -255,6 +256,12 @@ class HabitRepositoryImpl(
     private fun mapToFirebaseHabit(habit: Habit): FirebaseHabit {
         val endDay = Date.from(
             habit.endDay
+                .atStartOfDay(ZoneId.systemDefault())
+                .toInstant()
+        )
+
+        val createdDay = Date.from(
+            habit.createdDay
                 .atStartOfDay(ZoneId.systemDefault())
                 .toInstant()
         )
@@ -279,6 +286,7 @@ class HabitRepositoryImpl(
             name = habit.name,
             pickedDays = habit.pickedDays,
             endDay = endDay,
+            createdDay = createdDay,
             reminderTime = reminderTime,
             categoryId = habit.categoryId,
             color = habit.color,
@@ -302,6 +310,8 @@ class HabitRepositoryImpl(
 
         val endDay = getLocalDate(habit.endDay)
 
+        val createdDay = getLocalDate(habit.createdDay)
+
         val completedDays: List<LocalDate> = habit.completedDays.map {
             getLocalDate(it)
         }
@@ -315,6 +325,7 @@ class HabitRepositoryImpl(
             name = habit.name,
             pickedDays = habit.pickedDays,
             endDay = endDay,
+            createdDay = createdDay,
             reminderTime = reminderTime,
             categoryId = habit.categoryId,
             color = habit.color,
