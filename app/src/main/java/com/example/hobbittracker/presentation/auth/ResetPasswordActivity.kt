@@ -3,7 +3,10 @@ package com.example.hobbittracker.presentation.auth
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.hobbittracker.R
 import com.example.hobbittracker.databinding.ActivityResetPasswordBinding
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_reset_password.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ResetPasswordActivity : AppCompatActivity() {
@@ -12,28 +15,23 @@ class ResetPasswordActivity : AppCompatActivity() {
 
     private val vm: AuthViewModel by viewModel()
 
-    private lateinit var binding: ActivityResetPasswordBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityResetPasswordBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
 
-        binding.btnResetPasswordSend.setOnClickListener {
+        setContentView(R.layout.activity_reset_password)
+
+        btn_reset_password_send.setOnClickListener {
             if (validateEmail()) {
                 vm.resetPassword(
-                    binding.tietResetPasswordEmail.text.toString(),
+                    tiet_reset_password_email.text.toString(),
                     this
                 )
             }
         }
 
-        binding.btnResetPasswordCancel.setOnClickListener {
-            finish()
-        }
-
-        binding.tvResetPasswordLoginnow.setOnClickListener {
+       tv_reset_password_loginnow.setOnClickListener {
             vm.startActivity(this, LoginActivity::class.java, clearTasks = true, finish = true)
         }
 
@@ -47,7 +45,7 @@ class ResetPasswordActivity : AppCompatActivity() {
 
     private fun validateEmail(): Boolean {
         return AuthService.textViewValidateHandler(
-            AuthService.EmailValidator(), binding.tietResetPasswordEmail
+            AuthService.EmailValidator(), tiet_reset_password_email
         )
     }
 }
