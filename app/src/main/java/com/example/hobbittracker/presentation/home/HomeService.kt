@@ -129,7 +129,8 @@ object HomeService {
         reminderTime: LocalTime? = null,
         categoryId: Int = 0,
         color: String? = null,
-        id: String = ""
+        id: String = "",
+        createdDay: LocalDate? = null
     ): Habit = Habit(
         name = name,
         pickedDays = pickedDays.map {
@@ -142,6 +143,7 @@ object HomeService {
         reminderTime = reminderTime,
         categoryId = categoryId,
         color = color,
-        id = id
+        id = id,
+        createdDay = createdDay ?: LocalDate.now()
     )
 }

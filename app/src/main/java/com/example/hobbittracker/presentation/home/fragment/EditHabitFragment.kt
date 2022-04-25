@@ -140,7 +140,16 @@ class EditHabitFragment : Fragment() {
         val color = colorName.text.toString()
         val endDay = endTime.text.toString()
 
-        val habit = HomeService.mapToHabit(habitName, pickedDays, endDay, reminderTime, 0, color, id = currentHabit.id)
+        val habit = HomeService.mapToHabit(
+            habitName,
+            pickedDays,
+            endDay,
+            reminderTime,
+            0,
+            color,
+            id = currentHabit.id,
+            createdDay = currentHabit.createdDay
+        )
 
         vm.editHabit(habit)
 

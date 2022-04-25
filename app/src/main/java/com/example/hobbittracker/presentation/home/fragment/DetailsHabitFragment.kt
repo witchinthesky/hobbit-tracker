@@ -14,7 +14,9 @@ import com.prolificinteractive.materialcalendarview.DayViewDecorator
 import com.prolificinteractive.materialcalendarview.DayViewFacade
 import kotlinx.android.synthetic.main.fragment_details_habit.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import java.time.DayOfWeek
 import java.time.LocalDate
+import kotlin.math.roundToInt
 
 class DetailsHabitFragment : Fragment() {
 
@@ -85,7 +87,12 @@ class DetailsHabitFragment : Fragment() {
 
     // -------------- Analytics
 
-    private class AnalyticsInfo {
+    private class AnalyticsInfo(
+        private val pickedDays: List<DayOfWeek>,
+        private val completedDays: List<LocalDate>,
+        private val endDay: LocalDate,
+        private val startDay: LocalDate
+    ) {
         var longestStreak: Int = 0
             private set
 
@@ -95,7 +102,7 @@ class DetailsHabitFragment : Fragment() {
         var averageStreak: Int = 0
             private set
 
-        var completionRate: Float = 0f
+        var completionRate: String = "0.0"
             private set
 
         init {
@@ -103,16 +110,85 @@ class DetailsHabitFragment : Fragment() {
         }
 
         fun calculate() {
+            if (completedDays.isEmpty()) return
+            // init
+            var current_strike = 0
+            var sum_strike = 0
+            var count_strike = 0
+            var max_strike = 0
+            var nearest_day = getNearestPickedDay(startDay)
+            var completion_days = 0
+            var missed_days = 0
 
+
+            // calc before first completed
+            while (nearest_day < completedDays[0]) {
+                missed_days++
+                nearest_day = getNearestPickedDay(nearest_day)
+            }
+            // calc after first completed day
+            for (i in completedDays) {
+                if (i > nearest_day) {
+                    if (max_strike < current_strike) {
+                        max_strike = current_strike
+                    }
+                    sum_strike += current_strike
+                    count_strike++
+                    current_strike = 0
+                    missed_days++
+                    nearest_day = getNearestPickedDay(i)
+                } else if (i == nearest_day) {
+                    nearest_day = getNearestPickedDay(i)
+                    completion_days++
+                }
+
+                current_strike++
+            }
+            if (max_strike < current_strike)
+                max_strike = current_strike
+            sum_strike += current_strike
+            count_strike++
+
+            // calc after last completed day
+            while(nearest_day <= endDay) {
+                missed_days++
+                nearest_day = getNearestPickedDay(nearest_day)
+            }
+
+            // end
+            currentStreak = current_strike
+            longestStreak = max_strike
+            averageStreak = (sum_strike / count_strike.toFloat()).roundToInt()
+            completionRate = String.format(
+                "%.1f",
+                (completion_days / (missed_days + completion_days).toFloat() * 100)
+            ) + " %"
+        }
+
+        private fun getNearestPickedDay(day: LocalDate): LocalDate {
+            if (pickedDays.isEmpty()) return day.plusDays(1)
+            if (day.dayOfWeek in pickedDays) return day.plusWeeks(1)
+
+            var date = day
+            for (i in 0 until 6) {
+                if (date.dayOfWeek in pickedDays) break
+                else date = date.plusDays(1)
+            }
+            return date
         }
     }
 
     private fun initAnalytics() {
-        val a = AnalyticsInfo()
+        val a = AnalyticsInfo(
+            currentHabit.pickedDays,
+            currentHabit.completedDays,
+            currentHabit.endDay,
+            currentHabit.createdDay
+        )
         tv_longestStreak.text = a.longestStreak.toString()
         tv_currentStreak.text = a.currentStreak.toString()
         tv_averageStreak.text = a.averageStreak.toString()
-        tv_completionRate.text = a.completionRate.toString()
+        tv_completionRate.text = a.completionRate
     }
 
 
