@@ -3,16 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:background="@color/appBackground">
+    android:layout_height="150dp">
 
     <Button
         android:id="@+id/button_habit"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:background="@drawable/ic_text_field"
         android:backgroundTint="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/view_divider"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,8 +24,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:fontFamily="@font/nunito_bold"
         android:text="Habit Name"
-        android:textColor="#4A4646"
+        android:textColor="@color/purple_700"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/button_habit"
@@ -35,34 +34,34 @@
 
     <TextView
         android:id="@+id/textView_isToday"
-        app:layout_constraintTop_toTopOf="@+id/button_habit"
-        app:layout_constraintEnd_toEndOf="@+id/button_habit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
-        android:text="@string/today"/>
+        android:text="@string/today"
+        app:layout_constraintEnd_toEndOf="@+id/button_habit"
+        app:layout_constraintTop_toTopOf="@+id/button_habit" />
 
     <ImageView
         android:id="@+id/imageView_dot"
-        app:layout_constraintTop_toTopOf="@id/textView_isToday"
-        app:layout_constraintStart_toEndOf="@+id/textView_isToday"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
         android:layout_width="10dp"
         android:layout_height="10dp"
-        android:src="@drawable/icon_dot" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/icon_dot"
+        app:layout_constraintStart_toEndOf="@+id/textView_isToday"
+        app:layout_constraintTop_toTopOf="@id/textView_isToday" />
 
     <ImageView
         android:id="@+id/imageView_forward_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:src="@drawable/icon_forward_arrow"
+
         app:layout_constraintBottom_toTopOf="@+id/day_picker"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_dot"
         app:layout_constraintEnd_toEndOf="@+id/button_habit"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_dot"
+        app:srcCompat="@drawable/ic_vectorarrowright"
+        />
 
     <ca.antonious.materialdaypicker.MaterialDayPicker
         android:id="@+id/day_picker"
@@ -72,7 +71,6 @@
         android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/button_habit"
         app:layout_constraintStart_toStartOf="@+id/button_habit">
-
     </ca.antonious.materialdaypicker.MaterialDayPicker>
 
 

@@ -24,6 +24,102 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/habit_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="32dp"
+                android:background="@drawable/ic_text_field"
+                android:backgroundTint="@color/white"
+                app:layout_constraintBottom_toTopOf="@id/layout_calendar"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_cancel">
+
+                <ImageView
+                    android:id="@+id/thubnail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/ic_text_field"
+                    android:backgroundTint="@color/orange_200"
+                    android:src="@drawable/icon_habit_thubnail"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="habit name"
+                    app:layout_constraintLeft_toRightOf="@id/thubnail"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/repeat_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/thubnail"
+                    app:layout_constraintTop_toBottomOf="@+id/textView23">
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_vectorsafe" />
+
+                    <TextView
+                        android:id="@+id/repeat_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        app:layout_constraintStart_toEndOf="@+id/imageView4"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/reminder_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/thubnail"
+                    app:layout_constraintTop_toBottomOf="@+id/repeat_data">
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_vectorsafe" />
+
+                    <TextView
+                        android:id="@+id/reminder_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        app:layout_constraintStart_toEndOf="@+id/imageView5"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <ImageView
                 android:id="@+id/btn_edit"
                 android:layout_width="wrap_content"
@@ -92,12 +188,14 @@
                 android:id="@+id/layout_calendar"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:layout_margin="30dp"
-                android:layout_marginTop="60dp"
-                android:background="@drawable/border_corner_top"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/ic_text_field"
+                android:backgroundTint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_habitNameTitle">
+                app:layout_constraintTop_toBottomOf="@id/habit_detail">
 
                 <com.prolificinteractive.materialcalendarview.MaterialCalendarView
                     android:id="@+id/calendarView_habitDetail"
@@ -133,12 +231,11 @@
                     android:id="@+id/statsLeftButtom"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="2dp"
                     android:background="@drawable/b_roundcornerbottomleft"
                     android:backgroundTint="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/statsRightTop"
+                    app:layout_constraintEnd_toStartOf="@+id/spacer"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/statsLeftTop">
 
@@ -184,11 +281,10 @@
                     android:id="@+id/statsRightButtom"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
                     android:background="@drawable/b_roundcornerbottomright"
                     android:backgroundTint="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/statsLeftTop"
                     app:layout_constraintTop_toBottomOf="@+id/statsRightTop">
@@ -235,11 +331,9 @@
                     android:id="@+id/statsRightTop"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="2dp"
-                    android:layout_marginBottom="2dp"
+                    android:layout_marginStart="2dp"
                     android:background="@drawable/b_roundcornertopright"
                     android:backgroundTint="@color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/statsRightButtom"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/spacer"
                     app:layout_constraintTop_toTopOf="parent">
@@ -287,10 +381,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="2dp"
-                    android:layout_marginBottom="2dp"
                     android:background="@drawable/b_roundcornertopleft"
                     android:backgroundTint="@color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/statsRightButtom"
                     app:layout_constraintEnd_toStartOf="@+id/spacer"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -339,7 +431,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintLeft_toLeftOf="@id/statsLayout"
-                    app:layout_constraintRight_toRightOf="@id/statsLayout" />
+                    app:layout_constraintRight_toRightOf="@id/statsLayout"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

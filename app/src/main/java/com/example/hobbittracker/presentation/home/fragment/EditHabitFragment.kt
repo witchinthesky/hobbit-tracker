@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import ca.antonious.materialdaypicker.MaterialDayPicker
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_edit_habit.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+
 
 class EditHabitFragment : Fragment() {
 
@@ -61,6 +63,11 @@ class EditHabitFragment : Fragment() {
             else
                 alarmTime = null
         }
+
+        // init spinner
+
+
+
     }
 
     private fun setCurrentHabit() {
@@ -88,10 +95,11 @@ class EditHabitFragment : Fragment() {
             onTimePicked(it)
         }
 
-        tagName.setText(
+            /*
+        categorySelector.setText(
             vm.categories[currentHabit.categoryId].name
         )
-
+*/
         colorName.setText(
             currentHabit.color
         )
@@ -136,7 +144,7 @@ class EditHabitFragment : Fragment() {
         val habitName = habitName.text.toString()
         val pickedDays = day_picker.selectedDays
         val reminderTime = alarmTime
-        val category = tagName.text.toString()
+            // val category = categorySelector.text.toString()
         val color = colorName.text.toString()
         val endDay = endTime.text.toString()
 
@@ -156,3 +164,5 @@ class EditHabitFragment : Fragment() {
         onEventFinish()
     }
 }
+
+

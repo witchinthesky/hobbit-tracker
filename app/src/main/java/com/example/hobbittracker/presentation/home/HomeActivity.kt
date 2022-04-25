@@ -28,9 +28,8 @@ class HomeActivity : AppCompatActivity() {
 
     // some fragments are better to be created new so that they are not saved
     // creates fragments for bottom menu navigation
-    private val comunityfragment = ComunityFragment()
+
     private val settingsFragment = SettingsFragment()
-    private val statisticsFragment = StatisticsFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,16 +45,8 @@ class HomeActivity : AppCompatActivity() {
                 R.id.home -> {
                     replaceFragment(DashboardFragment())
                 }
-                R.id.account -> {
-                    // replaceFragment(comunityfragment)
-                    // TODO: remove temp details fragment
-                    replaceFragment(DetailsHabitFragment())
-                }
-                R.id.comunity -> {
-                    replaceFragment(settingsFragment)
-                }
                 R.id.setting -> {
-                    replaceFragment(statisticsFragment)
+                    replaceFragment(settingsFragment)
                 }
             }
             true
@@ -158,14 +149,6 @@ class HomeActivity : AppCompatActivity() {
                 return true
 
             }
-        }
-        // here we init our calendar, also you can set more properties if you haven't specified in XML layout
-        val singleRowCalendar = home_one_line_calendar.apply {
-            calendarViewManager = myCalendarViewManager
-            calendarChangesObserver = myCalendarChangesObserver
-            calendarSelectionManager = mySelectionManager
-            setDates(getFutureDatesOfCurrentMonth())
-            init()
         }
     }
 }

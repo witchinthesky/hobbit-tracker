@@ -89,7 +89,7 @@ class NewHabitFragment : Fragment() {
         val habitName = habitName.text.toString()
         val pickedDays = day_picker.selectedDays
         val reminderTime = alarmTime
-        val category = tagName.text.toString()
+        val category = categorySelector.text.toString()
         val color = colorName.text.toString()
         val endDay = endTime.text.toString()
 

@@ -16,22 +16,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top" />
 
-    <FrameLayout
-        android:id="@+id/homeContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <com.michalsvec.singlerowcalendar.calendar.SingleRowCalendar
-            android:id="@+id/home_one_line_calendar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </FrameLayout>
-
-
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/buttomNavigation"
         android:layout_width="match_parent"
