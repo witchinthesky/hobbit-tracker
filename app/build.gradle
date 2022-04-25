@@ -103,4 +103,7 @@ dependencies {
 
     //calendar library dependencies
     implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
+    
+    // color picker
+    implementation "dev.sasikanth:colorsheet:1.0.1"
 }
