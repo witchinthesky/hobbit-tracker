@@ -11,6 +11,7 @@
 
     <!-- Base -->
     <string name="request_canceled" translatable="false">Request canceled</string>
+    <string name="reminder">Reminder</string>
 
 
     <!-- Facebook tokens -->

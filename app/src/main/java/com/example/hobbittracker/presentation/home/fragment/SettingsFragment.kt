@@ -1,6 +1,12 @@
 package com.example.hobbittracker.presentation.home.fragment
 
+import android.app.Activity
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,12 +43,24 @@ class SettingsFragment : Fragment() {
         btn_logout.setOnClickListener {
             logOut()
         }
+
+        btn_notification.setOnClickListener {
+            notificationClickEvent()
+        }
+    }
+
+    private fun notificationClickEvent() {
+        createAndroidNotificationChannel(requireContext())
+        val intent = Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS)
+        intent.putExtra(Settings.EXTRA_APP_PACKAGE, requireContext().packageName)
+        intent.putExtra(Settings.EXTRA_CHANNEL_ID, REMINDERS_CHANNEL_ID)
+        startActivity(intent)
     }
 
     private fun onEventFinish() {
         vm.replaceFragment(
             requireActivity().supportFragmentManager,
-            DetailsHabitFragment()
+            DashboardFragment()
         )
     }
 
@@ -53,5 +71,19 @@ class SettingsFragment : Fragment() {
             MainActivity::class.java,
             clearTasks = true
         )
+    }
+
+    companion object {
+        private const val REMINDERS_CHANNEL_ID = "REMINDERS"
+        private fun createAndroidNotificationChannel(context: Context) {
+            val notificationManager = context.getSystemService(Activity.NOTIFICATION_SERVICE)
+                    as NotificationManager
+            val channel = NotificationChannel(
+                REMINDERS_CHANNEL_ID,
+                context.resources.getString(R.string.reminder),
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            notificationManager.createNotificationChannel(channel)
+        }
     }
 }
