@@ -166,11 +166,10 @@ class DetailsHabitFragment : Fragment() {
         }
 
         private fun getNearestPickedDay(day: LocalDate): LocalDate {
-            if (pickedDays.isEmpty()) return day.plusDays(1)
-            if (day.dayOfWeek in pickedDays) return day.plusWeeks(1)
+            var date = day.plusDays(1)
+            if (pickedDays.isEmpty()) return date
 
-            var date = day
-            for (i in 0 until 6) {
+            for (i in 0 until 7) {
                 if (date.dayOfWeek in pickedDays) break
                 else date = date.plusDays(1)
             }

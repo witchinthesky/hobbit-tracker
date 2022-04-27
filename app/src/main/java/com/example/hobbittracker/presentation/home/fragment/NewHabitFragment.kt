@@ -35,6 +35,7 @@ class NewHabitFragment : Fragment() {
     private lateinit var act: FragmentActivity
 
     private var selectedColor: Int = ColorSheet.NO_COLOR
+
     companion object {
         private const val COLOR_SELECTED = "selectedColor"
     }
@@ -44,8 +45,8 @@ class NewHabitFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_new_habit, container, false)
-        view.colorPicker_button.setOnClickListener{
+        val view = inflater.inflate(R.layout.fragment_new_habit, container, false)
+        view.colorPicker_button.setOnClickListener {
             setupColorSheet()
         }
         return view
@@ -65,8 +66,9 @@ class NewHabitFragment : Fragment() {
     }
 
     private fun setColor(@ColorInt color: Int) {
-        displayColor.backgroundTintList = ColorStateList.valueOf(color) // set color at display color box
-       // colorPicker_button.text = ColorSheetUtils.colorToHex(color)  // change to text
+        displayColor.backgroundTintList =
+            ColorStateList.valueOf(color) // set color at display color box
+        // colorPicker_button.text = ColorSheetUtils.colorToHex(color)  // change to text
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -100,7 +102,6 @@ class NewHabitFragment : Fragment() {
 
     private fun onTimePicked(time: LocalTime) {
         alarmTime = time
-        Toast.makeText(this.context, "$time", Toast.LENGTH_LONG).show()
         textView20.text = time.toString()
     }
 
@@ -132,7 +133,15 @@ class NewHabitFragment : Fragment() {
         val color = selectedColor.toString()
         val endDay = endTime.text.toString()
 
-        val habit = HomeService.mapToHabit(habitName, pickedDays, endDay, reminderTime, 0, color)
+        val habit = HomeService.mapToHabit(
+            habitName,
+            pickedDays,
+            endDay,
+            reminderTime,
+            0,
+            color,
+            reminderId = System.currentTimeMillis().toInt()
+        )
 
         vm.addHabit(habit)
 

@@ -185,7 +185,8 @@ class EditHabitFragment : Fragment() {
             0,
             color,
             id = currentHabit.id,
-            createdDay = currentHabit.createdDay
+            createdDay = currentHabit.createdDay,
+            reminderId = currentHabit.reminderId
         )
 
         vm.editHabit(habit)

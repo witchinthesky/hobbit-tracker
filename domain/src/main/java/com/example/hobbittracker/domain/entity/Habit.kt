@@ -11,6 +11,7 @@ data class Habit(
     val endDay: LocalDate,
     val createdDay: LocalDate,
     val reminderTime: LocalTime? = null,
+    val reminderId: Int = 0,
     val categoryId: Int = 0,
     val color: String? = null,
     val completedDays: MutableList<LocalDate> = mutableListOf(),

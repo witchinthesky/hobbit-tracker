@@ -11,7 +11,10 @@ import com.example.hobbittracker.domain.usecase.category.GetCategoriesAllUseCase
 import com.example.hobbittracker.domain.usecase.habit.*
 import com.example.hobbittracker.domain.utils.Result
 import com.example.hobbittracker.presentation.BaseViewModel
+import com.example.hobbittracker.presentation.home.notifications.RemindersManager
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import java.time.LocalDate
 
 class HomeViewModel(
@@ -24,9 +27,11 @@ class HomeViewModel(
     private val deleteHabitUseCase: DeleteHabitUseCase,
     private val setStateDayHabitUseCase: SetStateDayHabitUseCase,
     private val setStateHabitUseCase: SetStateHabitUseCase
-) : BaseViewModel(app) {
+) : BaseViewModel(app), KoinComponent {
 
-    
+
+    private val rm: RemindersManager by inject()
+
     var habits: MutableList<Habit> = mutableListOf()
         private set
     private val _habitsMLD = MutableLiveData<Long>(0L)
@@ -54,6 +59,8 @@ class HomeViewModel(
             viewModelScope.launch {
                 when (val result = addHabitUseCase(habit)) {
                     is Result.Success -> {
+                        rm.habits[result.data.id] = result.data
+                        rm.setHabitReminder(app.applicationContext, result.data.id)
                         habits.add(result.data)
                         habits.sort()
                         notifyListMLD(_habitsMLD)
@@ -147,6 +154,9 @@ class HomeViewModel(
             viewModelScope.launch {
                 when (val result = updateHabitUseCase(habit.id, habit)) {
                     is Result.Success -> {
+                        rm.habits[habit.id] = habit
+                        rm.setHabitReminder(app.applicationContext, habit.id)
+
                         val index = currentHabitPositionMLD.value
                         if (index != null) {
                             habits[index] = habit
@@ -173,6 +183,8 @@ class HomeViewModel(
             viewModelScope.launch {
                 when (val result = deleteHabitUseCase(habit.id)) {
                     is Result.Success -> {
+                        rm.deleteHabitReminder(app.applicationContext, habit.reminderId)
+
                         val index = currentHabitPositionMLD.value
                         if (index != null) {
                             habits.removeAt(index)
@@ -246,6 +258,10 @@ class HomeViewModel(
                         habits[it].id, true
                     )) {
                         is Result.Success -> {
+                            rm.deleteHabitReminder(
+                                app.applicationContext,
+                                habits[it].reminderId
+                            )
                             habits[it].isComplete = true
                             _toast.value = app.getString(R.string.habit_completed)
                         }
@@ -269,6 +285,10 @@ class HomeViewModel(
                         habits[it].id, true
                     )) {
                         is Result.Success -> {
+                            rm.deleteHabitReminder(
+                                app.applicationContext,
+                                habits[it].reminderId
+                            )
                             habits[it].isComplete = false
                             _toast.value = app.getString(R.string.habit_missed)
                         }

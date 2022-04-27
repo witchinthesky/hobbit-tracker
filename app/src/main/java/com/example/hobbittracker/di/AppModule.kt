@@ -2,6 +2,7 @@ package com.example.hobbittracker.di
 
 import com.example.hobbittracker.presentation.auth.AuthViewModel
 import com.example.hobbittracker.presentation.home.HomeViewModel
+import com.example.hobbittracker.presentation.home.notifications.RemindersManager
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -30,6 +31,13 @@ val appModule = module {
             deleteHabitUseCase = get(),
             setStateDayHabitUseCase = get(),
             setStateHabitUseCase = get()
+        )
+    }
+
+    single<RemindersManager> {
+        RemindersManager(
+            getHabitsAllUseCase = get(),
+            getHabitUseCase = get()
         )
     }
 }

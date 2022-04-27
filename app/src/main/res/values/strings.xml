@@ -94,6 +94,10 @@
     <string name="habit_completed">Habit is completed!</string>
     <string name="habit_missed">Habit is missed!</string>
 
-
+    <!-- HOME: Notifications -->
+    <string name="reminders_notification_channel_id">Hobbit tracker Notification ID</string>
+    <string name="reminders_notification_channel_name">Hobbit tracker Notification</string>
+    <string name="title_notification_reminder">Hobbit tracker</string>
+    <string name="description_notification_reminder">Habit to do: </string>
 
 </resources>
