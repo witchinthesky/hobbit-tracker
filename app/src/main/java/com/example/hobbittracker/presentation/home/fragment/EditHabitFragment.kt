@@ -13,29 +13,34 @@ import com.example.hobbittracker.R
 import com.example.hobbittracker.domain.entity.Habit
 import com.example.hobbittracker.presentation.home.HomeService
 import com.example.hobbittracker.presentation.home.HomeViewModel
+import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import dev.sasikanth.colorsheet.ColorSheet
 import kotlinx.android.synthetic.main.fragment_edit_habit.*
 import kotlinx.android.synthetic.main.fragment_edit_habit.view.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 
 class EditHabitFragment : Fragment() {
 
-    private var alarmTime: LocalTime? = null
-
     private val vm: HomeViewModel by sharedViewModel<HomeViewModel>()
 
     private lateinit var act: FragmentActivity
+
+    private var alarmTime: LocalTime? = null
+
+    private var deadline: LocalDate? = null
 
     private lateinit var currentHabit: Habit
 
     // save color of habit
     private var selectedColor: Int = ColorSheet.NO_COLOR
+
     companion object {
         private const val COLOR_SELECTED = "selectedColor"
-
     }
 
     override fun onCreateView(
@@ -43,29 +48,11 @@ class EditHabitFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_new_habit, container, false)
-        view.colorPicker_button.setOnClickListener{
+        val view = inflater.inflate(R.layout.fragment_edit_habit, container, false)
+        view.colorPicker_button.setOnClickListener {
             setupColorSheet()
         }
         return view
-    }
-
-    private fun setupColorSheet() {
-        val colors = resources.getIntArray(R.array.colors) // get array of colors
-        ColorSheet().cornerRadius(8)
-            .colorPicker(
-                colors = colors,
-                selectedColor = selectedColor,
-                listener = { color ->
-                    selectedColor = color
-                    setColor(selectedColor)
-                })
-            .show(childFragmentManager)
-    }
-
-    private fun setColor(@ColorInt color: Int) {
-        displayColor.backgroundTintList = ColorStateList.valueOf(color) // set color at display color box
-        // colorPicker_button.text = ColorSheetUtils.colorToHex(color)  // change to text
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -96,10 +83,34 @@ class EditHabitFragment : Fragment() {
                 alarmTime = null
         }
 
+        endTimeCalendar.setOnDateChangedListener { widget, day, selected ->
+            if (selected) onDatePicked(widget, day)
+        }
+
         // init spinner
+    }
 
+    private fun onEventFinish() {
+        vm.replaceFragment(act.supportFragmentManager, DashboardFragment())
+    }
 
+    private fun setupColorSheet() {
+        val colors = resources.getIntArray(R.array.colors) // get array of colors
+        ColorSheet().cornerRadius(8)
+            .colorPicker(
+                colors = colors,
+                selectedColor = selectedColor,
+                listener = { color ->
+                    selectedColor = color
+                    setColor(selectedColor)
+                })
+            .show(childFragmentManager)
+    }
 
+    private fun setColor(@ColorInt color: Int) {
+        displayColor.backgroundTintList =
+            ColorStateList.valueOf(color) // set color at display color box
+        // colorPicker_button.text = ColorSheetUtils.colorToHex(color)  // change to text
     }
 
     private fun setCurrentHabit() {
@@ -127,27 +138,48 @@ class EditHabitFragment : Fragment() {
             onTimePicked(it)
         }
 
-            /*
-        categorySelector.setText(
-            vm.categories[currentHabit.categoryId].name
-        )
+        /*
+    categorySelector.setText(
+        vm.categories[currentHabit.categoryId].name
+    )
 */
 
-        endTime.setText(
-            currentHabit.endDay.format(
-                DateTimeFormatter.ofPattern("dd/MM/yyyy")
+        currentHabit.endDay.let {
+            endTime.text = mapDateToString(it)
+            endTimeCalendar.selectedDate = CalendarDay.from(
+                it.year, it.monthValue, it.dayOfMonth
             )
-        )
-    }
-
-    private fun onEventFinish() {
-        vm.replaceFragment(act.supportFragmentManager, DetailsHabitFragment())
+        }
     }
 
     private fun onTimePicked(time: LocalTime) {
         alarmTime = time
         textView20.text = time.toString()
     }
+
+    private fun onDatePicked(view: MaterialCalendarView, day: CalendarDay) {
+        val selectedDay = LocalDate.of(day.year, day.month, day.day)
+        val minDay = LocalDate.now().plusDays(1)
+        val maxDay = minDay.plusYears(5)
+
+        if (selectedDay < minDay || selectedDay > maxDay) {
+            view.clearSelection()
+            deadline?.let {
+                view.selectedDate = CalendarDay.from(
+                    it.year, it.monthValue, it.dayOfMonth
+                )
+            }
+            return
+        }
+
+        deadline = selectedDay
+        endTime.text = mapDateToString(selectedDay)
+    }
+
+    private fun mapDateToString(day: LocalDate) = day.format(
+        DateTimeFormatter.ofPattern("dd MMMM yyyy")
+    )
+
 
     private fun validateName(): Boolean {
         return HomeService.textViewValidateHandler(
@@ -162,8 +194,8 @@ class EditHabitFragment : Fragment() {
     }
 
     private fun validateDeadline(): Boolean {
-        return HomeService.textViewValidateHandler(
-            endTime, HomeService.DeadlineValidator()
+        return HomeService.validateHandler(
+            deadline, HomeService.DeadlineValidator(), act
         )
     }
 
@@ -173,16 +205,16 @@ class EditHabitFragment : Fragment() {
         val habitName = habitName.text.toString()
         val pickedDays = day_picker.selectedDays
         val reminderTime = alarmTime
-            // val category = categorySelector.text.toString()
+        val endDay = deadline!!
         val color = selectedColor.toString()
-        val endDay = endTime.text.toString()
+        val category = 0
 
         val habit = HomeService.mapToHabit(
             habitName,
             pickedDays,
             endDay,
             reminderTime,
-            0,
+            category,
             color,
             id = currentHabit.id,
             createdDay = currentHabit.createdDay,

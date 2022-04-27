@@ -1,18 +1,21 @@
 package com.example.hobbittracker.presentation.home
 
 import android.app.Activity
+import android.app.Application
 import android.widget.TextView
 import android.widget.Toast
 import ca.antonious.materialdaypicker.MaterialDayPicker
+import com.example.hobbittracker.R
 import com.example.hobbittracker.domain.entity.Habit
 import com.example.hobbittracker.domain.utils.Result
 import com.example.hobbittracker.domain.utils.Validator
 import com.google.firebase.Timestamp
 import java.time.*
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 object HomeService {
+
+    lateinit var app: Application
 
     class NameValidator : Validator<String> {
         var minNameLength = 4
@@ -21,13 +24,19 @@ object HomeService {
         override fun validate(data: String): Result<String> {
             val name = data.trim()
 
+            val empty = app.getString(R.string.validate_name_empty)
+            val min_len = app.getString(R.string.validate_min_length)
+                .replace("[*]", minNameLength.toString())
+            val max_len = app.getString(R.string.validate_max_length)
+                .replace("[*]", maxNameLength.toString())
+
             return when {
                 name.isEmpty() ->
-                    Result.Error(Exception("Name is empty"))
+                    Result.Error(Exception(empty))
                 name.length < minNameLength ->
-                    Result.Error(Exception("Use at least $minNameLength characters"))
+                    Result.Error(Exception(min_len))
                 name.length > maxNameLength ->
-                    Result.Error(Exception("Use at least $maxNameLength characters"))
+                    Result.Error(Exception(max_len))
                 else ->
                     Result.Success(name)
             }
@@ -37,9 +46,11 @@ object HomeService {
     class WeekdaysValidator : Validator<List<MaterialDayPicker.Weekday>> {
         override fun validate(data: List<MaterialDayPicker.Weekday>):
                 Result<List<MaterialDayPicker.Weekday>> {
+            val empty = app.getString(R.string.validate_days_empty)
+
             return when {
                 data.isEmpty() ->
-                    Result.Error(Exception("No day selected"))
+                    Result.Error(Exception(empty))
                 else ->
                     Result.Success(data)
             }
@@ -47,38 +58,14 @@ object HomeService {
     }
 
 
-    class DeadlineValidator : Validator<String> {
-        override fun validate(data: String): Result<String> {
-            val sdate = data.trim()
-            val date: List<String> = sdate.split('/')
+    class DeadlineValidator : Validator<LocalDate?> {
+        override fun validate(data: LocalDate?): Result<LocalDate?> {
+            val empty = app.getString(R.string.validate_date_empty)
 
-            validateDate(date).let {
-                return if (it == null)
-                    Result.Success(sdate)
-                else
-                    Result.Error(it)
+            return when (data) {
+                null -> Result.Error(Exception(empty))
+                else -> Result.Success(data)
             }
-        }
-
-        private fun validateDate(date: List<String>): Exception? {
-            val err = Exception("Date incorrect")
-
-            if (date.size < 3) return err
-
-            try {
-                val newDate = date.map {
-                    it.toInt()
-                }
-
-                val datetime = LocalDateTime.of(newDate[2], newDate[1], newDate[0], 0, 0, 0)
-                val now = LocalDateTime.now()
-
-                if (datetime < now) return err
-                if (datetime > now.plusYears(5)) return err
-            } catch (e: Exception) {
-                return e
-            }
-            return null
         }
 
         companion object {
@@ -94,6 +81,7 @@ object HomeService {
             }
         }
     }
+
 
     fun textViewValidateHandler(textView: TextView, validator: Validator<String>): Boolean {
         return when (val result = validator.validate(textView.text.toString())) {
@@ -125,27 +113,24 @@ object HomeService {
     fun mapToHabit(
         name: String,
         pickedDays: List<MaterialDayPicker.Weekday>,
-        endDay: String,
+        endDay: LocalDate,
         reminderTime: LocalTime? = null,
         categoryId: Int = 0,
         color: String? = null,
         id: String = "",
         createdDay: LocalDate? = null,
-        reminderId: Int = 0
+        reminderId: Int? = 0
     ): Habit = Habit(
+        id = id,
         name = name,
         pickedDays = pickedDays.map {
             DayOfWeek.valueOf(it.name)
         },
-        endDay = LocalDate.parse(
-            endDay,
-            DateTimeFormatter.ofPattern("dd/MM/yyyy")
-        ),
         reminderTime = reminderTime,
-        categoryId = categoryId,
-        color = color,
-        id = id,
+        reminderId = reminderId ?: System.currentTimeMillis().toInt(),
         createdDay = createdDay ?: LocalDate.now(),
-        reminderId = reminderId
+        endDay = endDay,
+        categoryId = categoryId,
+        color = color
     )
 }

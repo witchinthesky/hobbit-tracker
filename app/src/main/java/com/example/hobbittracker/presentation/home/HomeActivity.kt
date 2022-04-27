@@ -30,6 +30,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        HomeService.app = application
         // fix glitches at bottom menu
         bottomNavigationView.background = null
         bottomNavigationView.itemIconTintList = null

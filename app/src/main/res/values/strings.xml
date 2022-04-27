@@ -100,4 +100,13 @@
     <string name="title_notification_reminder">Hobbit tracker</string>
     <string name="description_notification_reminder">Habit to do: </string>
 
+    <!-- HOME: Validation -->
+    <string name="validate_min_length">Use at least [*] characters</string>
+    <string name="validate_max_length">Use no more than [*] characters</string>
+    <string name="validate_name_empty">Name is empty</string>
+    <string name="validate_date_empty">End Date is empty</string>
+    <string name="validate_days_empty">No day selected</string>
+    <string name="validate_empty">This is empty</string>
+
+
 </resources>
