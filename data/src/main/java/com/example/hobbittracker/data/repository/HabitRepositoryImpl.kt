@@ -246,6 +246,7 @@ class HabitRepositoryImpl(
         val endDay: Date = Date(),
         val createdDay: Date = Date(),
         val reminderTime: Date? = null,
+        val reminderId: Int = 0,
         val categoryId: Int = 0,
         val color: String? = null,
         val completedDays: List<Date> = listOf(),
@@ -291,7 +292,8 @@ class HabitRepositoryImpl(
             categoryId = habit.categoryId,
             color = habit.color,
             completedDays = completedDays,
-            isComplete = habit.isComplete
+            isComplete = habit.isComplete,
+            reminderId = habit.reminderId
         )
     }
 
@@ -330,7 +332,8 @@ class HabitRepositoryImpl(
             categoryId = habit.categoryId,
             color = habit.color,
             completedDays = completedDays.toMutableList(),
-            isComplete = habit.isComplete
+            isComplete = habit.isComplete,
+            reminderId = habit.reminderId
         )
     }
 }
