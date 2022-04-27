@@ -116,7 +116,7 @@ object HomeService {
         endDay: LocalDate,
         reminderTime: LocalTime? = null,
         categoryId: Int = 0,
-        color: String? = null,
+        color: Int = -1,
         id: String = "",
         createdDay: LocalDate? = null,
         reminderId: Int? = 0

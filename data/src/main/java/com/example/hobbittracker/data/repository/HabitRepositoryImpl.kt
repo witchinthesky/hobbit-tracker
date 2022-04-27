@@ -248,7 +248,7 @@ class HabitRepositoryImpl(
         val reminderTime: Date? = null,
         val reminderId: Int = 0,
         val categoryId: Int = 0,
-        val color: String? = null,
+        val color: Int = -1,
         val completedDays: List<Date> = listOf(),
         @field:JvmField
         val isComplete: Boolean? = null

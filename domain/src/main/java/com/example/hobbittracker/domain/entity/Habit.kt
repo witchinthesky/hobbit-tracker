@@ -13,7 +13,7 @@ data class Habit(
     val reminderTime: LocalTime? = null,
     val reminderId: Int = 0,
     val categoryId: Int = 0,
-    val color: String? = null,
+    val color: Int = -1,
     val completedDays: MutableList<LocalDate> = mutableListOf(),
     @field:JvmField
     var isComplete: Boolean? = null
@@ -60,7 +60,7 @@ data class Habit(
         result = 31 * result + endDay.hashCode()
         result = 31 * result + (reminderTime?.hashCode() ?: 0)
         result = 31 * result + categoryId
-        result = 31 * result + (color?.hashCode() ?: 0)
+        result = 31 * result + (color.hashCode())
         result = 31 * result + completedDays.hashCode()
         result = 31 * result + (isComplete?.hashCode() ?: 0)
         return result

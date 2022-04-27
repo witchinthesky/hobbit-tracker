@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.item_habit.view.*
 import java.time.DayOfWeek
 import java.time.LocalDate
 
+
 class HabitListAdapter(private val context: Context?) :
     RecyclerView.Adapter<HabitListAdapter.HabitListViewHolder>() {
 
@@ -89,6 +90,9 @@ class HabitListAdapter(private val context: Context?) :
                 else if (!isSelected)
                     itemView.day_picker.selectDay(day)
             }
+
+            // set color habit
+            itemView.button_habit.strokeColor = data.color
 
             itemView.button_habit.setOnClickListener {
                 detailsClickListener(data, position)

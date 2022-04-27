@@ -37,6 +37,7 @@ class EditHabitFragment : Fragment() {
     private lateinit var currentHabit: Habit
 
     // save color of habit
+    @ColorInt
     private var selectedColor: Int = ColorSheet.NO_COLOR
 
     companion object {
@@ -95,6 +96,9 @@ class EditHabitFragment : Fragment() {
     }
 
     private fun setupColorSheet() {
+        selectedColor = currentHabit.color
+        setColor(selectedColor)
+
         val colors = resources.getIntArray(R.array.colors) // get array of colors
         ColorSheet().cornerRadius(8)
             .colorPicker(
@@ -145,6 +149,7 @@ class EditHabitFragment : Fragment() {
 */
 
         currentHabit.endDay.let {
+            deadline = it
             endTime.text = mapDateToString(it)
             endTimeCalendar.selectedDate = CalendarDay.from(
                 it.year, it.monthValue, it.dayOfMonth
@@ -206,7 +211,7 @@ class EditHabitFragment : Fragment() {
         val pickedDays = day_picker.selectedDays
         val reminderTime = alarmTime
         val endDay = deadline!!
-        val color = selectedColor.toString()
+        val color = selectedColor
         val category = 0
 
         val habit = HomeService.mapToHabit(

@@ -31,6 +31,7 @@ class NewHabitFragment : Fragment() {
 
     private var deadline: LocalDate? = null
 
+    @ColorInt
     private var selectedColor: Int = ColorSheet.NO_COLOR
 
     companion object {
@@ -155,7 +156,7 @@ class NewHabitFragment : Fragment() {
         val pickedDays = day_picker.selectedDays
         val reminderTime = alarmTime
         val endDay = deadline!!
-        val color = selectedColor.toString()
+        val color = selectedColor
         val category = 0
 
         val habit = HomeService.mapToHabit(
