@@ -7,6 +7,7 @@ import com.example.hobbittracker.data.valstore.OnBoardingStateStorage
 import com.example.hobbittracker.presentation.auth.AuthViewModel
 import com.example.hobbittracker.presentation.auth.LoginActivity
 import com.example.hobbittracker.presentation.home.HomeActivity
+import com.example.hobbittracker.presentation.home.notifications.RemindersManager
 import com.example.hobbittracker.presentation.onboarding.OnBoarding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -41,6 +42,9 @@ class MainActivity : AppCompatActivity() {
         }
         // view Login activity while another coroutines is running
         vm.startActivity(this@MainActivity, LoginActivity::class.java, finish = true)
+
+        // create channel for notifications
+        RemindersManager.createNotificationsChannels(this)
     }
 
     // TODO: delete
