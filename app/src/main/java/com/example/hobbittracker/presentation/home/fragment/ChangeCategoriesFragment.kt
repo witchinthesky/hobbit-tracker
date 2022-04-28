@@ -10,6 +10,7 @@ import com.example.hobbittracker.domain.entity.CategoryHabits
 import com.example.hobbittracker.domain.utils.Validator
 import com.example.hobbittracker.presentation.home.HomeService
 import com.example.hobbittracker.presentation.home.HomeViewModel
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_change_categories.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -28,6 +29,8 @@ class ChangeCategoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        hideNavigation()
+
         initFields()
 
         btn_cancel.setOnClickListener {
@@ -37,6 +40,11 @@ class ChangeCategoriesFragment : Fragment() {
         btn_save_changes.setOnClickListener {
             onEventDone()
         }
+    }
+
+    private fun hideNavigation() {
+        requireActivity().buttomNavigation.visibility = View.INVISIBLE
+        requireActivity().btn_add.visibility = View.INVISIBLE
     }
 
     private fun onEventFinish() {

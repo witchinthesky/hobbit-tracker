@@ -12,6 +12,7 @@ import com.example.hobbittracker.presentation.home.HomeViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.DayViewDecorator
 import com.prolificinteractive.materialcalendarview.DayViewFacade
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_details_habit.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.time.DayOfWeek
@@ -37,6 +38,8 @@ class DetailsHabitFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        hideNavigation()
+
         setCurrentHabit()
 
         initToolbar()
@@ -52,6 +55,11 @@ class DetailsHabitFragment : Fragment() {
     }
 
     // ----------- Main
+    private fun hideNavigation() {
+        requireActivity().buttomNavigation.visibility = View.INVISIBLE
+        requireActivity().btn_add.visibility = View.INVISIBLE
+    }
+
     private fun initToolbar() {
         btn_cancel.setOnClickListener {
             onEventFinish()

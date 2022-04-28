@@ -1,6 +1,7 @@
 package com.example.hobbittracker.presentation.home
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -10,17 +11,12 @@ import com.example.hobbittracker.presentation.home.fragment.NewHabitFragment
 import com.example.hobbittracker.presentation.home.fragment.SettingsFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
 
 
 class HomeActivity : AppCompatActivity() {
     private val tag = this::class.java.simpleName
 
     private val vm: HomeViewModel by viewModel()
-
-    private val calendar = Calendar.getInstance()
-    private var currentMonth = 0
-
 
     // some fragments are better to be created new so that they are not saved
     // creates fragments for bottom menu navigation
@@ -31,10 +27,8 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         HomeService.app = application
-        // fix glitches at bottom menu
-        bottomNavigationView.background = null
-        bottomNavigationView.itemIconTintList = null
-        btn_done.imageTintList = null
+
+        initNavigation()
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
@@ -48,7 +42,7 @@ class HomeActivity : AppCompatActivity() {
             true
         }
 
-        btn_done.setOnClickListener {
+        btn_add.setOnClickListener {
             replaceFragment(NewHabitFragment())
         }
 
@@ -62,6 +56,16 @@ class HomeActivity : AppCompatActivity() {
         vm.pullCategoriesAll()
 
         replaceFragment(DashboardFragment())
+    }
+
+    private fun initNavigation() {
+        // fix glitches at bottom menu
+        bottomNavigationView.background = null
+        bottomNavigationView.itemIconTintList = null
+        btn_add.imageTintList = null
+        // show navigation
+        btn_add.visibility = View.VISIBLE
+        buttomNavigation.visibility = View.VISIBLE
     }
 
     private fun replaceFragment(fragment: Fragment) {

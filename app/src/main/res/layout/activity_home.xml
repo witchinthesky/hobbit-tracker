@@ -43,7 +43,7 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_done"
+        android:id="@+id/btn_add"
         android:backgroundTint="@color/orange_700"
         app:srcCompat="@drawable/ic_add_habit"
         app:maxImageSize="19dp"

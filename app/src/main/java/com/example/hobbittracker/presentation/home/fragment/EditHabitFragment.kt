@@ -16,6 +16,7 @@ import com.example.hobbittracker.presentation.home.HomeViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import dev.sasikanth.colorsheet.ColorSheet
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_edit_habit.*
 import kotlinx.android.synthetic.main.fragment_edit_habit.view.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -60,6 +61,8 @@ class EditHabitFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         act = this.requireActivity()
+
+        hideNavigation()
 
         setCurrentHabit()
 
@@ -115,6 +118,11 @@ class EditHabitFragment : Fragment() {
         displayColor.backgroundTintList =
             ColorStateList.valueOf(color) // set color at display color box
         // colorPicker_button.text = ColorSheetUtils.colorToHex(color)  // change to text
+    }
+
+    private fun hideNavigation() {
+        act.buttomNavigation.visibility = View.INVISIBLE
+        act.btn_add.visibility = View.INVISIBLE
     }
 
     private fun setCurrentHabit() {

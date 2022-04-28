@@ -12,6 +12,7 @@ import com.example.hobbittracker.domain.entity.CategoryHabits
 import com.example.hobbittracker.domain.entity.Habit
 import com.example.hobbittracker.presentation.home.HomeViewModel
 import com.example.hobbittracker.presentation.home.adapter.HabitListAdapter
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -35,6 +36,8 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        showNavigation()
+
         initRecyclerView()
 
         initAdapter()
@@ -48,6 +51,11 @@ class DashboardFragment : Fragment() {
         vm.categoriesMLD.observe(viewLifecycleOwner) {
             updateCategories(vm.categories)
         }
+    }
+
+    private fun showNavigation() {
+        requireActivity().btn_add.visibility = View.VISIBLE
+        requireActivity().buttomNavigation.visibility = View.VISIBLE
     }
 
     private fun initAdapter() {

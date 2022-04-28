@@ -4,6 +4,7 @@ import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
 import android.view.ViewGroup
 import androidx.annotation.ColorInt
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import com.example.hobbittracker.presentation.home.HomeViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import dev.sasikanth.colorsheet.ColorSheet
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_new_habit.*
 import kotlinx.android.synthetic.main.fragment_new_habit.view.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -54,6 +56,8 @@ class NewHabitFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         act = this.requireActivity()
+
+        hideNavigation()
 
         btn_cancel.setOnClickListener {
             onEventFinish()
@@ -101,6 +105,11 @@ class NewHabitFragment : Fragment() {
         displayColor.backgroundTintList =
             ColorStateList.valueOf(color) // set color at display color box
         // colorPicker_button.text = ColorSheetUtils.colorToHex(color)  // change to text
+    }
+
+    private fun hideNavigation() {
+        act.buttomNavigation.visibility = INVISIBLE
+        act.btn_add.visibility = INVISIBLE
     }
 
     private fun onTimePicked(time: LocalTime) {

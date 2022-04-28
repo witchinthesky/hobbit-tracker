@@ -11,6 +11,7 @@ import com.example.hobbittracker.R
 import com.example.hobbittracker.presentation.MainActivity
 import com.example.hobbittracker.presentation.auth.AuthViewModel
 import com.example.hobbittracker.presentation.home.HomeViewModel
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_edit_habit.btn_cancel
 import kotlinx.android.synthetic.main.fragment_settings.*
 import org.koin.android.ext.android.inject
@@ -32,6 +33,8 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        showNavigation()
+
         btn_cancel.setOnClickListener {
             onEventFinish()
         }
@@ -50,6 +53,11 @@ class SettingsFragment : Fragment() {
                 ChangeCategoriesFragment()
             )
         }
+    }
+
+    private fun showNavigation() {
+        requireActivity().btn_add.visibility = View.VISIBLE
+        requireActivity().buttomNavigation.visibility = View.VISIBLE
     }
 
     private fun notificationClickEvent() {
