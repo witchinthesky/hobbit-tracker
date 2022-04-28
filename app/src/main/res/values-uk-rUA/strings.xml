@@ -9,4 +9,11 @@
     <string name="prev">Назад</string>
     <string name="on_boarding01_desc">Ми можемо допомогти вам стати кращою версією себе</string>
     <string name="home_page">Home Page</string>
+    <string name="details_repeat_everyday">Повторяти кожен день</string>
+    <string name="details_remind_dont">Не повідомляти</string>
+    <string name="details_remind_at">Повідомляти:</string>
+    <string name="details_is_missed">Не виконана</string>
+    <string name="details_is_during">В процесі</string>
+    <string name="details_is_complete">Виконана</string>
+    <string name="details_repeat_at">"Повторяти в "</string>
 </resources>

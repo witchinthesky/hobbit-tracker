@@ -93,6 +93,15 @@
     <string name="habit_missed">Habit is missed!</string>
     <string name="habit_delete_successful">Habit successful deleted!</string>
     <string name="habit_delete_failed">Habit delete failed!</string>
+    <!-- HOME: Details Fragment (Top block) -->
+    <string name="details_is_complete">Completed</string>
+    <string name="details_is_missed">Missed</string>
+    <string name="details_is_during">During</string>
+    <string name="details_repeat_at">Repeat at</string>
+    <string name="details_repeat_everyday">Repeat everyday</string>
+    <string name="details_remind_dont">Don\'t remind</string>
+    <string name="details_remind_at">Remind:</string>
+
 
     <!-- HOME: Notifications -->
     <string name="reminders_notification_channel_id">Hobbit tracker Notification ID</string>

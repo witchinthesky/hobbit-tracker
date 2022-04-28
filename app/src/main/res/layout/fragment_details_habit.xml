@@ -58,7 +58,7 @@
                         app:srcCompat="@drawable/ic_vectorsafe" />
 
                     <TextView
-                        android:id="@+id/is_completed_text"
+                        android:id="@+id/tv_isCompleted"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"
@@ -81,7 +81,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView23"
+                    android:id="@+id/tv_habitNameTitle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -98,7 +98,7 @@
                     android:layout_marginTop="4dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/thubnail"
-                    app:layout_constraintTop_toBottomOf="@+id/textView23">
+                    app:layout_constraintTop_toBottomOf="@+id/tv_habitNameTitle2">
 
                     <ImageView
                         android:id="@+id/imageView4"
@@ -109,7 +109,7 @@
                         app:srcCompat="@drawable/ic_vectorsafe" />
 
                     <TextView
-                        android:id="@+id/repeat_text"
+                        android:id="@+id/tv_repeatDays"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"
@@ -136,7 +136,7 @@
                         app:srcCompat="@drawable/ic_vectorsafe" />
 
                     <TextView
-                        android:id="@+id/reminder_text"
+                        android:id="@+id/tv_reminderTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"

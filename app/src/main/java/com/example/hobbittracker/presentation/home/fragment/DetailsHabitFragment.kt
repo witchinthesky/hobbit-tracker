@@ -16,6 +16,8 @@ import kotlinx.android.synthetic.main.fragment_details_habit.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.time.DayOfWeek
 import java.time.LocalDate
+import java.time.format.TextStyle
+import java.util.*
 import kotlin.math.roundToInt
 
 class DetailsHabitFragment : Fragment() {
@@ -39,6 +41,8 @@ class DetailsHabitFragment : Fragment() {
 
         initToolbar()
 
+        initTopBlock()
+
         initAnalytics()
 
         initCalendar()
@@ -58,6 +62,36 @@ class DetailsHabitFragment : Fragment() {
         }
 
         tv_habitNameTitle.text = currentHabit.name
+    }
+
+    private fun initTopBlock() {
+        // title
+        tv_habitNameTitle2.text = currentHabit.name
+
+        // is complete text
+        tv_isCompleted.text = when (currentHabit.isComplete) {
+            true -> getString(R.string.details_is_complete)
+            false -> getString(R.string.details_is_missed)
+            null -> getString(R.string.details_is_during)
+        }
+
+        // repeat Days
+        currentHabit.pickedDays.map {
+            it.getDisplayName(
+                TextStyle.SHORT,
+                Locale.getDefault()
+            )
+        }.let {
+            tv_repeatDays.text =
+                if (it.size == 7) getString(R.string.details_repeat_everyday)
+                else getString(R.string.details_repeat_at) + it.joinToString(prefix = " ")
+        }
+
+        // reminder time alarm
+        val time = currentHabit.reminderTime?.toString()
+        tv_reminderTime.text =
+            if (time == null) getString(R.string.details_remind_dont)
+            else getString(R.string.details_remind_at) + " $time"
     }
 
     private fun initHabitButtons() {
@@ -155,7 +189,7 @@ class DetailsHabitFragment : Fragment() {
             count_strike++
 
             // calc after last completed day
-            while(nearest_day <= endDay) {
+            while (nearest_day <= endDay) {
                 missed_days++
                 nearest_day = getNearestPickedDay(nearest_day)
             }
