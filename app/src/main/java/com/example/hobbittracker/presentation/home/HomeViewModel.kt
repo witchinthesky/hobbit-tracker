@@ -8,6 +8,7 @@ import com.example.hobbittracker.R
 import com.example.hobbittracker.domain.entity.CategoryHabits
 import com.example.hobbittracker.domain.entity.Habit
 import com.example.hobbittracker.domain.usecase.category.GetCategoriesAllUseCase
+import com.example.hobbittracker.domain.usecase.category.UpdateCategoryUseCase
 import com.example.hobbittracker.domain.usecase.habit.*
 import com.example.hobbittracker.domain.utils.Result
 import com.example.hobbittracker.presentation.BaseViewModel
@@ -26,7 +27,8 @@ class HomeViewModel(
     private val updateHabitUseCase: UpdateHabitUseCase,
     private val deleteHabitUseCase: DeleteHabitUseCase,
     private val setStateDayHabitUseCase: SetStateDayHabitUseCase,
-    private val setStateHabitUseCase: SetStateHabitUseCase
+    private val setStateHabitUseCase: SetStateHabitUseCase,
+    private val updateCategoryUseCase: UpdateCategoryUseCase
 ) : BaseViewModel(app), KoinComponent {
 
 
@@ -301,6 +303,31 @@ class HomeViewModel(
                         }
                     }
                 }
+            }
+        }
+    }
+
+
+    fun updateCategories(categoriesList: List<CategoryHabits>) {
+        launchDataLoad {
+            viewModelScope.launch {
+                for (category in categoriesList) {
+                    when (val result = updateCategoryUseCase(category)) {
+                        is Result.Success -> {
+                            categories[category.id] = category
+                        }
+                        is Result.Error -> {
+                            var err = app.getString(R.string.category_update_failed)
+                                .replace("[*]", "${category.name} (${category.id})")
+                            err += "<br>" + result.exception.message
+                            _toast.value = err
+                        }
+                        is Result.Canceled -> {
+                            _toast.value = app.getString(R.string.request_canceled)
+                        }
+                    }
+                }
+                notifyListMLD(_categoriesMLD)
             }
         }
     }

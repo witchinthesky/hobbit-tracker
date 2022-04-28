@@ -30,7 +30,8 @@ val appModule = module {
             updateHabitUseCase = get(),
             deleteHabitUseCase = get(),
             setStateDayHabitUseCase = get(),
-            setStateHabitUseCase = get()
+            setStateHabitUseCase = get(),
+            updateCategoryUseCase = get()
         )
     }
 

@@ -1,9 +1,5 @@
 package com.example.hobbittracker.presentation.home.fragment
 
-import android.app.Activity
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
@@ -47,13 +43,25 @@ class SettingsFragment : Fragment() {
         btn_notification.setOnClickListener {
             notificationClickEvent()
         }
+
+        btn_categories.setOnClickListener {
+            vm.replaceFragment(
+                requireActivity().supportFragmentManager,
+                ChangeCategoriesFragment()
+            )
+        }
     }
 
     private fun notificationClickEvent() {
-        createAndroidNotificationChannel(requireContext())
         val intent = Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS)
-        intent.putExtra(Settings.EXTRA_APP_PACKAGE, requireContext().packageName)
-        intent.putExtra(Settings.EXTRA_CHANNEL_ID, REMINDERS_CHANNEL_ID)
+        intent.putExtra(
+            Settings.EXTRA_APP_PACKAGE,
+            requireContext().packageName
+        )
+        intent.putExtra(
+            Settings.EXTRA_CHANNEL_ID,
+            getString(R.string.reminders_notification_channel_id)
+        )
         startActivity(intent)
     }
 
@@ -71,19 +79,5 @@ class SettingsFragment : Fragment() {
             MainActivity::class.java,
             clearTasks = true
         )
-    }
-
-    companion object {
-        private const val REMINDERS_CHANNEL_ID = "REMINDERS"
-        private fun createAndroidNotificationChannel(context: Context) {
-            val notificationManager = context.getSystemService(Activity.NOTIFICATION_SERVICE)
-                    as NotificationManager
-            val channel = NotificationChannel(
-                REMINDERS_CHANNEL_ID,
-                context.resources.getString(R.string.reminder),
-                NotificationManager.IMPORTANCE_DEFAULT
-            )
-            notificationManager.createNotificationChannel(channel)
-        }
     }
 }

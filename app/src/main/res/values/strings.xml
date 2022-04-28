@@ -86,7 +86,6 @@
     <string name="habit_update_failed">Habit updated failed!</string>
     <string name="habit_update_successful">Habit successful updated!</string>
 
-
     <!-- HOME: Details Fragment -->
     <string name="habit_today_completed">Today habit is completed!</string>
     <string name="habit_today_missed">Today habit is missed!</string>
@@ -109,5 +108,7 @@
     <string name="validate_days_empty">No day selected</string>
     <string name="validate_empty">This is empty</string>
 
+    <!-- HOME: Settings Categories Fragment -->
+    <string name="category_update_failed">Category [*] update failed!</string>
 
 </resources>
