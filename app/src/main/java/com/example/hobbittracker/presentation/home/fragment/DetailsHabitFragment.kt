@@ -69,7 +69,7 @@ class DetailsHabitFragment : Fragment() {
             vm.replaceFragment(requireActivity().supportFragmentManager, EditHabitFragment())
         }
 
-        tv_habitNameTitle.text = currentHabit.name
+        tv_premium_title.text = currentHabit.name
     }
 
     private fun initTopBlock() {

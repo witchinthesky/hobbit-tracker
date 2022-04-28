@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.INVISIBLE
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.annotation.ColorInt
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -23,7 +25,7 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-class NewHabitFragment : Fragment() {
+class NewHabitFragment : Fragment(), AdapterView.OnItemSelectedListener  {
 
     private val vm: HomeViewModel by sharedViewModel<HomeViewModel>()
 
@@ -36,9 +38,8 @@ class NewHabitFragment : Fragment() {
     @ColorInt
     private var selectedColor: Int = ColorSheet.NO_COLOR
 
-    companion object {
-        private const val COLOR_SELECTED = "selectedColor"
-    }
+    private var selectedCategoryId: Int = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,6 +59,8 @@ class NewHabitFragment : Fragment() {
         act = this.requireActivity()
 
         hideNavigation()
+
+        initSpinner()
 
         btn_cancel.setOnClickListener {
             onEventFinish()
@@ -83,11 +86,17 @@ class NewHabitFragment : Fragment() {
         }
     }
 
-
     private fun onEventFinish() {
         vm.replaceFragment(act.supportFragmentManager, DashboardFragment())
     }
 
+
+    private fun hideNavigation() {
+        act.buttomNavigation.visibility = INVISIBLE
+        act.btn_add.visibility = INVISIBLE
+    }
+
+    // -------------- color picker
     private fun setupColorSheet() {
         val colors = resources.getIntArray(R.array.colors) // get array of colors
         ColorSheet().cornerRadius(8)
@@ -107,11 +116,38 @@ class NewHabitFragment : Fragment() {
         // colorPicker_button.text = ColorSheetUtils.colorToHex(color)  // change to text
     }
 
-    private fun hideNavigation() {
-        act.buttomNavigation.visibility = INVISIBLE
-        act.btn_add.visibility = INVISIBLE
+
+    // --------- Spinner
+    private fun initSpinner() {
+        ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_item,
+            vm.categories.map { it.name }
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            categorySelector.adapter = adapter
+        }
+
+        categorySelector.setSelection(selectedCategoryId)
+        categorySelector.onItemSelectedListener = this
+//        categorySelector.isEnabled = false
     }
 
+    override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
+        // An item was selected. You can retrieve the selected item using
+        selectedCategoryId = vm.categories.find {
+            it.name == parent.getItemAtPosition(pos).toString()
+        }?.id ?: 0
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>) {
+        // Another interface callback
+    }
+
+
+    // -------- date and time pickers
     private fun onTimePicked(time: LocalTime) {
         alarmTime = time
         textView20.text = time.toString()
@@ -140,6 +176,8 @@ class NewHabitFragment : Fragment() {
         DateTimeFormatter.ofPattern("dd MMMM yyyy")
     )
 
+
+    // ---------- validators
     private fun validateName(): Boolean {
         return HomeService.textViewValidateHandler(
             habitName, HomeService.NameValidator()
@@ -158,6 +196,8 @@ class NewHabitFragment : Fragment() {
         )
     }
 
+
+    // ------- End
     private fun onEventDone() {
         if (!validateName() || !validateWeekdays() || !validateDeadline()) return
 
@@ -166,14 +206,13 @@ class NewHabitFragment : Fragment() {
         val reminderTime = alarmTime
         val endDay = deadline!!
         val color = selectedColor
-        val category = 0
 
         val habit = HomeService.mapToHabit(
             habitName,
             pickedDays,
             endDay,
             reminderTime,
-            category,
+            selectedCategoryId,
             color
         )
 
