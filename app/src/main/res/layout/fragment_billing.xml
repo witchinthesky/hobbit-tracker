@@ -23,17 +23,6 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
-                android:id="@+id/btn_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/button_back"
-                android:src="@drawable/icon_settings"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_cancel"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btn_cancel" />
-
-            <ImageView
                 android:id="@+id/btn_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,202 +33,92 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_habitNameTitle"
+                android:id="@+id/tv_premium_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Habit Name"
+                android:text="Premium"
                 android:textColor="@android:color/black"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_edit" />
+                app:layout_constraintTop_toBottomOf="@id/btn_cancel" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_calendar"
+            <!--  +++++++++++++++++++++++++++ -->
+            <Button
+                android:id="@+id/btn_planPay1"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_margin="30dp"
-                android:layout_marginTop="60dp"
-                android:background="@drawable/border_corner_top"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_habitNameTitle">
-
-                <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-                    android:id="@+id/calendarView_habitDetail"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:mcv_selectionColor="#99754F44"
-                    app:mcv_selectionMode="none"
-                    app:mcv_showOtherDates="all"
-                    app:mcv_tileSize="match_parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <!--    +++++++++++++++++++++++++++ -->
-            <!--        ANALYTICS BLOKE -->
-            <!--    +++++++++++++++++++++++++++ -->
-            <View
-                android:id="@+id/view_bar"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginTop="30dp"
-                android:background="@color/barGrayColor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layout_calendar" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Analytics"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:paddingVertical="20dp"
+                android:text="Select first Plan"
                 android:textColor="@android:color/black"
-                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view_bar" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_premium_title"
+                app:shapeAppearance="@style/HabitListTheme"
+                app:strokeWidth="0dp" />
 
-
-            <TextView
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btn_planPay2"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="60dp"
-                android:text="Longest streak (days)"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view_bar" />
-
-            <TextView
-                android:id="@+id/tv_longestStreak"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
                 android:layout_marginEnd="30dp"
-                android:text="days"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:paddingVertical="20dp"
+                android:text="Select second Plan"
                 android:textColor="@android:color/black"
-                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view_bar" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_planPay1"
+                app:shapeAppearance="@style/HabitListTheme"
+                app:strokeWidth="0dp" />
 
-
-            <TextView
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btn_planPay3"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="15dp"
-                android:text="Current streak (days)"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_longestStreak" />
-
-            <TextView
-                android:id="@+id/tv_currentStreak"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
-                android:text="days"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:paddingVertical="20dp"
+                android:text="Select third plan"
                 android:textColor="@android:color/black"
-                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_longestStreak" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="15dp"
-                android:text="Average streak (days)"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_currentStreak" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_planPay2"
+                app:shapeAppearance="@style/HabitListTheme"
+                app:strokeWidth="0dp" />
 
-            <TextView
-                android:id="@+id/tv_averageStreak"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="30dp"
-                android:text="days"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_currentStreak" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="15dp"
-                android:text="Completion Rate (%)"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_averageStreak" />
-
-            <TextView
-                android:id="@+id/tv_completionRate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="30dp"
-                android:text="rate"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_averageStreak" />
-
-
-            <!--    +++++++++++++++++++++++++++ -->
-            <!--        BUTTONS                  -->
-            <!--    +++++++++++++++++++++++++++ -->
+            <!--  +++++++++++++++++++++++++++ -->
             <Button
                 android:id="@+id/btn_markAsComplete"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
+                android:layout_margin="30dp"
                 android:backgroundTint="@color/orange_700"
                 android:gravity="center"
                 android:paddingVertical="20dp"
-                android:text="Mark Habit as Complete"
+                android:text="Subscribe Now"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_completionRate"
-                app:shapeAppearance="@style/HabitListTheme"
-                app:strokeWidth="0dp" />
-
-            <Button
-                android:id="@+id/btn_markAsMissed"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:backgroundTint="@color/white"
-                android:gravity="center"
-                android:paddingVertical="20dp"
-                android:text="Mark Habit as Missed"
-                android:textColor="@android:color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_markAsComplete"
+                app:layout_constraintTop_toBottomOf="@+id/btn_planPay3"
                 app:shapeAppearance="@style/HabitListTheme"
                 app:strokeWidth="0dp" />
 
