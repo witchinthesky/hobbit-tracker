@@ -486,7 +486,7 @@
                 app:strokeWidth="0dp" />
 
             <Button
-                android:id="@+id/btn_markAsMissed2"
+                android:id="@+id/btn_deleteHabit"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -71,6 +71,11 @@ class DetailsHabitFragment : Fragment() {
             vm.missedHabitDay(now)
             onEventFinish()
         }
+
+        btn_deleteHabit.setOnClickListener {
+            vm.deleteHabit(currentHabit)
+            onEventFinish()
+        }
     }
 
     private fun onEventFinish() {

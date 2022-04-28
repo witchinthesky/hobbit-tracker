@@ -189,11 +189,12 @@ class HomeViewModel(
                         if (index != null) {
                             habits.removeAt(index)
                             notifyListMLD(_habitsMLD)
-                            _toast.value = app.getString(R.string.habit_update_successful)
+                            currentHabitPositionMLD.value = null
+                            _toast.value = app.getString(R.string.habit_delete_successful)
                         }
                     }
                     is Result.Error -> {
-                        _toast.value = app.getString(R.string.habit_update_failed) +
+                        _toast.value = app.getString(R.string.habit_delete_failed) +
                                 "<br>" + result.exception.message
                     }
                     is Result.Canceled -> {
