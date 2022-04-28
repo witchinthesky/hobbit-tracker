@@ -33,6 +33,9 @@ val dataModule = module {
     }
 
     single<CategoryHabitsRepository> {
-        CategoryHabitsRepositoryImpl()
+        CategoryHabitsRepositoryImpl(
+            authStorage = get(),
+            currentUserUseCase = get()
+        )
     }
 }

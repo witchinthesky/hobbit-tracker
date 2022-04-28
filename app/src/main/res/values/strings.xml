@@ -65,9 +65,9 @@
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="reset_instructions">Enter your registered email below to receive password reset instruction</string>
     <string name="all_category">All</string>
-    <string name="category2">Diet</string>
-    <string name="category4">Career</string>
-    <string name="category5">Growh</string>
+    <string name="category1">Tag</string>
+    <string name="category2">Tag</string>
+    <string name="category3">Tag</string>
 
 
     <!-- HOME: Add Habit -->

@@ -30,21 +30,21 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category2" />
+            android:text="@string/category1" />
 
         <Button
             android:id="@+id/category_2"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category4" />
+            android:text="@string/category2" />
 
         <Button
             android:id="@+id/category_3"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category5" />
+            android:text="@string/category3" />
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
