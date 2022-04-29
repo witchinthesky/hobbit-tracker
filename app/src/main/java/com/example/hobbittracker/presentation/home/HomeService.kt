@@ -119,7 +119,7 @@ object HomeService {
         color: Int = -1,
         id: String = "",
         createdDay: LocalDate? = null,
-        reminderId: Int? = 0
+        reminderId: Int? = null
     ): Habit = Habit(
         id = id,
         name = name,

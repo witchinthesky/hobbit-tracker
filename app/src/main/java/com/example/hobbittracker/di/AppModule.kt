@@ -24,6 +24,7 @@ val appModule = module {
         HomeViewModel(
             app = get(),
             getCategoriesAllUseCase = get(),
+            getHabitUseCase = get(),
             addHabitUseCase = get(),
             getHabitsAllUseCase = get(),
             getHabitsByCategoryUseCase = get(),

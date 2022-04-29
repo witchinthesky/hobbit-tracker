@@ -69,7 +69,7 @@ class DashboardFragment : Fragment() {
         categoryPicker.check(R.id.category_all)
         vm.pullHabitsAll()
 
-        if (vm.USER_VERIFIED) {
+        if (HomeViewModel.USER_VERIFIED) {
             categoryPicker.addOnButtonCheckedListener { _, checkedId, isChecked ->
                 if (isChecked) {
                     when (checkedId) {
