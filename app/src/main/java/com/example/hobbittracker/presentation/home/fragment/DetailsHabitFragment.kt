@@ -270,6 +270,7 @@ class DetailsHabitFragment : Fragment() {
             longestStreak = max_strike
             averageStreak = (sum_strike / count_strike.toFloat()).roundToInt()
             completionRate = (completion_days / (missed_days + completion_days).toFloat() * 100)
+            if (completionRate.isNaN()) completionRate = 0f
         }
 
         private fun getNearestPickedDay(day: LocalDate): LocalDate {
