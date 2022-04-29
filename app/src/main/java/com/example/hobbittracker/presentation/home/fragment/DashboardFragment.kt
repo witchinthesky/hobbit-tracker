@@ -69,14 +69,27 @@ class DashboardFragment : Fragment() {
         categoryPicker.check(R.id.category_all)
         vm.pullHabitsAll()
 
-        categoryPicker.addOnButtonCheckedListener { _, checkedId, isChecked ->
-            if(isChecked){
-                when(checkedId){
-                    R.id.category_all -> vm.pullHabitsAll()
-                    R.id.category_1 -> vm.pullHabitsByCategory(1)
-                    R.id.category_2 -> vm.pullHabitsByCategory(2)
-                    R.id.category_3 -> vm.pullHabitsByCategory(3)
+        if (vm.USER_VERIFIED) {
+            categoryPicker.addOnButtonCheckedListener { _, checkedId, isChecked ->
+                if (isChecked) {
+                    when (checkedId) {
+                        R.id.category_all -> vm.pullHabitsAll()
+                        R.id.category_1 -> vm.pullHabitsByCategory(1)
+                        R.id.category_2 -> vm.pullHabitsByCategory(2)
+                        R.id.category_3 -> vm.pullHabitsByCategory(3)
+                    }
                 }
+            }
+        } else {
+            listOf(category_1, category_2, category_3).forEach {
+                it.isEnabled = false
+            }
+            btn_getPremium.visibility = View.VISIBLE
+            btn_getPremium.setOnClickListener {
+                vm.replaceFragment(
+                    requireActivity().supportFragmentManager,
+                    BillingFragment()
+                )
             }
         }
     }
@@ -95,7 +108,7 @@ class DashboardFragment : Fragment() {
 
     private fun updateCategories(categories: Array<CategoryHabits>) {
         // categories[0] has value: "None" and don`t changed
-        if(categories.size >= 4) {
+        if (categories.size >= 4) {
             category_1.text = categories[1].name
             category_2.text = categories[2].name
             category_3.text = categories[3].name

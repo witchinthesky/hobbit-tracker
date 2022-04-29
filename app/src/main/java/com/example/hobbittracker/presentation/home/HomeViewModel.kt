@@ -50,6 +50,7 @@ class HomeViewModel(
 
     val currentHabitPositionMLD = MutableLiveData<Int?>(0)
 
+    val USER_VERIFIED = false
 
     private fun notifyListMLD(mld: MutableLiveData<Long>) {
         mld.value = System.currentTimeMillis()

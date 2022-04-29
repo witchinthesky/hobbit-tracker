@@ -4,6 +4,7 @@ import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -179,9 +180,21 @@ class EditHabitFragment : Fragment(), AdapterView.OnItemSelectedListener {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         categorySelector.adapter = adapter
 
-        categorySelector.onItemSelectedListener = this
-        categorySelector.setSelection(selectedCategoryId)
-//        categorySelector.isEnabled = false
+        categorySelector.let {
+            it.setSelection(selectedCategoryId)
+            if (!vm.USER_VERIFIED) {
+                it.isEnabled = false
+                btn_getPremium.visibility = VISIBLE
+                btn_getPremium.setOnClickListener {
+                    vm.replaceFragment(
+                        requireActivity().supportFragmentManager,
+                        BillingFragment()
+                    )
+                }
+            } else {
+                it.onItemSelectedListener = this
+            }
+        }
     }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {

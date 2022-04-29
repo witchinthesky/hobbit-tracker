@@ -1,5 +1,6 @@
 package com.example.hobbittracker.presentation.home.fragment
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,7 +26,8 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-class NewHabitFragment : Fragment(), AdapterView.OnItemSelectedListener  {
+
+class NewHabitFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     private val vm: HomeViewModel by sharedViewModel<HomeViewModel>()
 
@@ -118,21 +120,30 @@ class NewHabitFragment : Fragment(), AdapterView.OnItemSelectedListener  {
 
 
     // --------- Spinner
+    @SuppressLint("ClickableViewAccessibility")
     private fun initSpinner() {
-        ArrayAdapter(
+        val adapter = ArrayAdapter(
             requireContext(),
             android.R.layout.simple_spinner_item,
             vm.categories.map { it.name }
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            categorySelector.adapter = adapter
-        }
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        categorySelector.adapter = adapter
 
-        categorySelector.setSelection(selectedCategoryId)
-        categorySelector.onItemSelectedListener = this
-//        categorySelector.isEnabled = false
+        categorySelector.let {
+            if (!vm.USER_VERIFIED) {
+                it.isEnabled = false
+                btn_getPremium.visibility = View.VISIBLE
+                btn_getPremium.setOnClickListener {
+                    vm.replaceFragment(
+                        requireActivity().supportFragmentManager,
+                        BillingFragment()
+                    )
+                }
+            } else {
+                it.onItemSelectedListener = this
+            }
+        }
     }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {

@@ -56,7 +56,7 @@
                 android:backgroundTint="@color/white"
                 android:gravity="center"
                 android:paddingVertical="20dp"
-                android:text="Select first Plan"
+                android:text="Select monthly plan"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +76,7 @@
                 android:backgroundTint="@color/white"
                 android:gravity="center"
                 android:paddingVertical="20dp"
-                android:text="Select second Plan"
+                android:text="Select yearly Plan"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +96,7 @@
                 android:backgroundTint="@color/white"
                 android:gravity="center"
                 android:paddingVertical="20dp"
-                android:text="Select third plan"
+                android:text="Select lifetime plan"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +106,7 @@
 
             <!--  +++++++++++++++++++++++++++ -->
             <Button
-                android:id="@+id/btn_markAsComplete"
+                android:id="@+id/btn_subscribe_now"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
