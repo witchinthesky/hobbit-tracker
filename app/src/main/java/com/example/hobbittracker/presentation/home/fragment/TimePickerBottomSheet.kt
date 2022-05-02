@@ -25,10 +25,6 @@ class TimePickerBottomSheet(
 
     private var isAmSelected: Boolean = true
 
-    override fun getTheme(): Int {
-        return R.style.bottomSheetDialogTheme
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

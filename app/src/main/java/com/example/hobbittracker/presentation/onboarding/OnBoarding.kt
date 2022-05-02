@@ -17,6 +17,7 @@ import com.example.hobbittracker.presentation.onboarding.model.OnBoardingData
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+// import org.koin.androidx.scope.lifecycleScope
 
 class OnBoarding : AppCompatActivity() {
 
@@ -55,7 +56,7 @@ class OnBoarding : AppCompatActivity() {
 
         val onBoardingData:MutableList<OnBoardingData> = ArrayList()
 
-        onBoardingData.add(OnBoardingData(R.string.on_boarding01_title, R.string.on_boarding01_desc, R.drawable.ic__placeholder))
+        onBoardingData.add(OnBoardingData(R.string.on_boarding01_title, R.string.on_boarding01_desc, R.drawable.ic_pasted_image))
         onBoardingData.add(OnBoardingData(R.string.on_boarding02_title, R.string.on_boarding01_desc, R.drawable.ic_habits))
         onBoardingData.add(OnBoardingData(R.string.on_boarding03_title, R.string.on_boarding01_desc, R.drawable.ic_progress))
         onBoardingData.add(OnBoardingData(R.string.on_boarding04_title, R.string.on_boarding01_desc, R.drawable.ic_community_support))
