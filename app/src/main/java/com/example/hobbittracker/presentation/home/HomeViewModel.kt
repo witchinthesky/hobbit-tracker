@@ -21,6 +21,7 @@ import java.time.LocalDate
 class HomeViewModel(
     private val app: Application,
     private val getCategoriesAllUseCase: GetCategoriesAllUseCase,
+    private val getHabitUseCase: GetHabitUseCase,
     private val addHabitUseCase: AddHabitUseCase,
     private val getHabitsAllUseCase: GetHabitsAllUseCase,
     private val getHabitsByCategoryUseCase: GetHabitsByCategoryUseCase,
@@ -49,8 +50,6 @@ class HomeViewModel(
 
 
     val currentHabitPositionMLD = MutableLiveData<Int?>(0)
-
-    val USER_VERIFIED = false
 
     private fun notifyListMLD(mld: MutableLiveData<Long>) {
         mld.value = System.currentTimeMillis()
@@ -159,14 +158,20 @@ class HomeViewModel(
                     is Result.Success -> {
                         rm.habits[habit.id] = habit
                         rm.setHabitReminder(app.applicationContext, habit.id)
-
                         val index = currentHabitPositionMLD.value
                         if (index != null) {
-                            habits[index] = habit
-                            habits.sort()
-                            notifyListMLD(_habitsMLD)
-                            currentHabitPositionMLD.value = habits.indexOf(habit)
-                            _toast.value = app.getString(R.string.habit_update_successful)
+                            when (val res = getHabitUseCase(habit.id)) {
+                                is Result.Success -> {
+                                    habits[index] = res.data
+                                    habits.sort()
+                                    currentHabitPositionMLD.value = habits.indexOfFirst {
+                                        it.id == habit.id
+                                    }
+                                    notifyListMLD(_habitsMLD)
+                                    _toast.value = app.getString(R.string.habit_update_successful)
+                                }
+                                else -> {}
+                            }
                         }
                     }
                     is Result.Error -> {
@@ -216,7 +221,9 @@ class HomeViewModel(
                         habits[it].id, day, true
                     )) {
                         is Result.Success -> {
-                            habits[it].completedDays.add(day)
+                            if (day !in habits[it].completedDays) {
+                                habits[it].completedDays.add(day)
+                            }
                             _toast.value = app.getString(R.string.habit_today_completed)
                         }
                         is Result.Error -> {
@@ -309,6 +316,32 @@ class HomeViewModel(
     }
 
 
+    fun duringHabit() {
+        launchDataLoad {
+            viewModelScope.launch {
+                currentHabitPositionMLD.value?.let {
+                    when (val result = setStateHabitUseCase(
+                        habits[it].id, null
+                    )) {
+                        is Result.Success -> {
+                            habits[it].isComplete = null
+                            rm.setHabitReminder(
+                                app.applicationContext,
+                                habits[it].id
+                            )
+                        }
+                        is Result.Error -> {
+                            _toast.value = result.exception.message
+                        }
+                        is Result.Canceled -> {
+                            _toast.value = app.getString(R.string.request_canceled)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     fun updateCategories(categoriesList: List<CategoryHabits>) {
         launchDataLoad {
             viewModelScope.launch {
@@ -333,5 +366,7 @@ class HomeViewModel(
         }
     }
 
-
+    companion object {
+        const val USER_VERIFIED = true
+    }
 }

@@ -182,7 +182,7 @@ class EditHabitFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         categorySelector.let {
             it.setSelection(selectedCategoryId)
-            if (!vm.USER_VERIFIED) {
+            if (!HomeViewModel.USER_VERIFIED) {
                 it.isEnabled = false
                 btn_getPremium.visibility = VISIBLE
                 btn_getPremium.setOnClickListener {

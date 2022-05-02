@@ -4,16 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.hobbittracker.R
+import com.example.hobbittracker.data.valstore.CongratulationShowStorage
 import com.example.hobbittracker.domain.entity.Habit
 import com.example.hobbittracker.presentation.home.HomeViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.DayViewDecorator
 import com.prolificinteractive.materialcalendarview.DayViewFacade
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.dialog_user_contrags.view.*
 import kotlinx.android.synthetic.main.fragment_details_habit.*
+import kotlinx.coroutines.runBlocking
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -26,6 +30,8 @@ class DetailsHabitFragment : Fragment() {
     private val vm: HomeViewModel by sharedViewModel()
 
     private lateinit var currentHabit: Habit
+
+    private lateinit var analyticsInfo: AnalyticsInfo
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,24 +46,80 @@ class DetailsHabitFragment : Fragment() {
 
         hideNavigation()
 
-        setCurrentHabit()
+        vm.habitsMLD.observe(viewLifecycleOwner) {
+            setCurrentHabit()
 
-        initToolbar()
+            initToolbar()
 
-        initTopBlock()
+            initTopBlock()
 
-        initAnalytics()
+            initAnalytics()
 
-        initCalendar()
+            initCalendar()
+
+            initCompletionState()
+        }
 
         initHabitButtons()
-
     }
+
 
     // ----------- Main
     private fun hideNavigation() {
         requireActivity().buttomNavigation.visibility = View.INVISIBLE
         requireActivity().btn_add.visibility = View.INVISIBLE
+    }
+
+    private fun initCompletionState() {
+        runBlocking {
+            val storage = CongratulationShowStorage(
+                requireContext(),
+                currentHabit.id
+            )
+
+            if (analyticsInfo.completionRate > 99) {
+                if (currentHabit.isComplete != true) {
+                    vm.completeHabit()
+                    storage(false)
+                    initTopBlock()
+                }
+                if (!storage()) {
+                    startCongratulationsDialog()
+                    storage(true)
+                }
+            } else if (LocalDate.now() >= currentHabit.endDay) {
+                if (currentHabit.isComplete != false) {
+                    vm.missedHabit()
+                    initTopBlock()
+                }
+            } else if (currentHabit.isComplete != null) {
+                vm.duringHabit()
+                initTopBlock()
+            }
+        }
+    }
+
+    private fun startCongratulationsDialog() {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(
+            R.layout.dialog_user_contrags,
+            null
+        )
+        val dialog: AlertDialog = AlertDialog
+            .Builder(requireContext())
+            .setView(dialogView)
+            .show()
+
+        dialogView.btn_createNewHabit.setOnClickListener {
+            vm.replaceFragment(
+                requireActivity().supportFragmentManager,
+                NewHabitFragment()
+            )
+            dialog.dismiss()
+        }
+
+        dialogView.btn_continue.setOnClickListener {
+            dialog.dismiss()
+        }
     }
 
     private fun initToolbar() {
@@ -136,7 +198,7 @@ class DetailsHabitFragment : Fragment() {
 
     private class AnalyticsInfo(
         private val pickedDays: List<DayOfWeek>,
-        private val completedDays: List<LocalDate>,
+        private val completedDays: MutableList<LocalDate>,
         private val endDay: LocalDate,
         private val startDay: LocalDate
     ) {
@@ -149,7 +211,7 @@ class DetailsHabitFragment : Fragment() {
         var averageStreak: Int = 0
             private set
 
-        var completionRate: String = "0.0"
+        var completionRate: Float = 0.0f
             private set
 
         init {
@@ -159,11 +221,12 @@ class DetailsHabitFragment : Fragment() {
         fun calculate() {
             if (completedDays.isEmpty()) return
             // init
+            completedDays.sort()
             var current_strike = 0
             var sum_strike = 0
             var count_strike = 0
             var max_strike = 0
-            var nearest_day = getNearestPickedDay(startDay)
+            var nearest_day = getNearestPickedDay(startDay.minusDays(1))
             var completion_days = 0
             var missed_days = 0
 
@@ -215,7 +278,8 @@ class DetailsHabitFragment : Fragment() {
             currentStreak = current_strike
             longestStreak = max_strike
             averageStreak = (sum_strike / count_strike.toFloat()).roundToInt()
-            completionRate = String.format("%.1f", complection_rate) + " %"
+            completionRate = (completion_days / (missed_days + completion_days).toFloat() * 100)
+            if (completionRate.isNaN()) completionRate = 0f
         }
 
         private fun getNearestPickedDay(day: LocalDate): LocalDate {
@@ -231,16 +295,17 @@ class DetailsHabitFragment : Fragment() {
     }
 
     private fun initAnalytics() {
-        val a = AnalyticsInfo(
+        analyticsInfo = AnalyticsInfo(
             currentHabit.pickedDays,
             currentHabit.completedDays,
             currentHabit.endDay,
             currentHabit.createdDay
         )
-        tv_longestStreak.text = a.longestStreak.toString()
-        tv_currentStreak.text = a.currentStreak.toString()
-        tv_averageStreak.text = a.averageStreak.toString()
-        tv_completionRate.text = a.completionRate
+        tv_longestStreak.text = analyticsInfo.longestStreak.toString()
+        tv_currentStreak.text = analyticsInfo.currentStreak.toString()
+        tv_averageStreak.text = analyticsInfo.averageStreak.toString()
+        val completionRateText = String.format("%.1f", analyticsInfo.completionRate) + " %"
+        tv_completionRate.text = completionRateText
     }
 
 
@@ -253,6 +318,7 @@ class DetailsHabitFragment : Fragment() {
         val endDay = currentHabit.endDay.let {
             CalendarDay.from(it.year, it.monthValue, it.dayOfMonth)
         }
+        calendarView_habitDetail.removeDecorators()
         calendarView_habitDetail.addDecorators(DecoratorDays(completedDays))
         calendarView_habitDetail.addDecorators(DecoratorEndDay(endDay))
     }

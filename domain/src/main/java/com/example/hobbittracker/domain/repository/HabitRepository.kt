@@ -18,7 +18,7 @@ interface HabitRepository {
 
     suspend fun deleteHabit(id: String): Result<Void?>
 
-    suspend fun setStateHabit(id: String, isComplete: Boolean): Result<Void?>
+    suspend fun setStateHabit(id: String, isComplete: Boolean?): Result<Void?>
 
     suspend fun setStateDayHabit(id: String, date: LocalDate, isComplete: Boolean = true): Result<Void?>
 }

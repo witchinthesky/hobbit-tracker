@@ -40,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_createNewHabit"
         style="@style/ButtonOrange"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_continue"
         style="@style/ButtonOrange"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,5 +64,5 @@
         android:text="@string/continue_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_createNewHabit" />
 </androidx.constraintlayout.widget.ConstraintLayout>

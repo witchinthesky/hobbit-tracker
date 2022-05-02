@@ -125,8 +125,7 @@ class HabitRepositoryImpl(
                 "endDay" to newHabit.endDay,
                 "reminderTime" to newHabit.reminderTime,
                 "categoryId" to newHabit.categoryId,
-                "color" to newHabit.color,
-                "completedDays" to newHabit.completedDays
+                "color" to newHabit.color
             )
 
             when (val result = doc.update(query).await()) {
@@ -166,7 +165,7 @@ class HabitRepositoryImpl(
         }
     }
 
-    override suspend fun setStateHabit(id: String, isComplete: Boolean): Result<Void?> {
+    override suspend fun setStateHabit(id: String, isComplete: Boolean?): Result<Void?> {
         return try {
             val query = getCollection()
                 .document(id)
