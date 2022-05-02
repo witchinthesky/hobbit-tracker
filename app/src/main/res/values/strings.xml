@@ -112,7 +112,6 @@
     <string name="category_name">Category Name</string>
     <string name="pick_color">Pick Color</string>
     <string name="end_date">End date</string>
-    <string name="new_habit">New Habit</string>
     <string name="settings">Settings</string>
     <string name="general">General</string>
     <string name="support">Support</string>
@@ -156,5 +155,8 @@
     <string name="details_repeat_at">Repeat at</string>
     <string name="details_remind_dont">Don`t remind</string>
     <string name="details_remind_at">Remind at</string>
+    <string name="on_boarding03_desc">"Track your habits and analyze progress - build motivating chains of completed habits and perfect days. "</string>
+    <string name="on_boarding04_desc">"The Productive Journey awaits "</string>
+    <string name="on_boarding02_desc">Create, complete, stop or pause your habits whenever it is convenient for you</string>
 
 </resources>

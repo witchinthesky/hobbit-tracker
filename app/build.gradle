@@ -109,5 +109,5 @@ dependencies {
 
     // payment
     implementation 'com.anjlab.android.iab.v3:library:2.0.3'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+
 }

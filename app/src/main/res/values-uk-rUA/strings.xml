@@ -79,4 +79,7 @@
     <string name="save">"Зберегти "</string>
     <string name="log_in_with_email">Увійти</string>
     <string name="reminder">Нагадування</string>
+    <string name="on_boarding03_desc">Відслідковуйте свої звички та аналізуйте прогрес</string>
+    <string name="on_boarding02_desc">"Створюйте, виконуйте, зупиняйте чи призупиняйте свої звички "</string>
+    <string name="on_boarding04_desc">Продуктивність чекає</string>
 </resources>

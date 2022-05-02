@@ -253,7 +253,6 @@
                 style="@style/Theme.Hobbittracker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:backgroundTint="@color/orange_700"
                 android:contentDescription="@string/on_boarding01_desc"
@@ -262,7 +261,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent"
                 app:maxImageSize="19dp"
                 app:srcCompat="@drawable/ic_done"
                 tools:ignore="MissingConstraints" />

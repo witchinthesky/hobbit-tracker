@@ -61,7 +61,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_premium_title"
-                app:shapeAppearance="@style/HabitListTheme"
                 app:strokeWidth="0dp" />
 
             <Button
@@ -81,7 +80,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_planPay1"
-                app:shapeAppearance="@style/HabitListTheme"
                 app:strokeWidth="0dp" />
 
             <Button
@@ -101,7 +99,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_planPay2"
-                app:shapeAppearance="@style/HabitListTheme"
                 app:strokeWidth="0dp" />
 
             <!--  +++++++++++++++++++++++++++ -->
@@ -119,7 +116,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_planPay3"
-                app:shapeAppearance="@style/HabitListTheme"
                 app:strokeWidth="0dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

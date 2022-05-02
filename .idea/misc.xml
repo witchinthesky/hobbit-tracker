@@ -50,6 +50,7 @@
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/icon_calendar_check.xml" value="0.238" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/icon_calendar_end_day.xml" value="0.238" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/icon_done.xml" value="0.3035" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/icon_dot.xml" value="0.182" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/icon_forward_arrow.xml" value="0.3035" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/icon_settings.xml" value="0.3035" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/drawable/indicator_selector.xml" value="0.234" />
@@ -67,7 +68,7 @@
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_home.xml" value="0.23899102180418982" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_main.xml" value="0.30043859649122806" />
-        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_on_boarding.xml" value="0.2753623188405797" />
+        <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_on_boarding.xml" value="0.25" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_register.xml" value="0.5" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/activity_reset_password.xml" value="0.33" />
         <entry key="..\:/Android/project/hobbit-tracker/app/src/main/res/layout/bottom_sheet_time_picker.xml" value="0.67" />

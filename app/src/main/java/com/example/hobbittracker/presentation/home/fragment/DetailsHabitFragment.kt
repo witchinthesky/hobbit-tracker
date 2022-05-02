@@ -202,14 +202,20 @@ class DetailsHabitFragment : Fragment() {
                 nearest_day = getNearestPickedDay(nearest_day)
             }
 
+            // change calculation of completion rate
+            var complection_rate = 0.0
+            if (missed_days == 0 && completion_days != 0){
+                complection_rate = 100.0
+            }
+            else if(missed_days != 0 && completion_days != 0){
+                complection_rate = (missed_days / (completion_days).toFloat() * 100.0)
+            }
+
             // end
             currentStreak = current_strike
             longestStreak = max_strike
             averageStreak = (sum_strike / count_strike.toFloat()).roundToInt()
-            completionRate = String.format(
-                "%.1f",
-                (completion_days / (missed_days + completion_days).toFloat() * 100)
-            ) + " %"
+            completionRate = String.format("%.1f", complection_rate) + " %"
         }
 
         private fun getNearestPickedDay(day: LocalDate): LocalDate {
