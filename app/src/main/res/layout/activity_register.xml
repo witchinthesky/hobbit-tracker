@@ -59,6 +59,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
+        style="@style/EditTextOrange"
         app:errorEnabled="true"
         app:hintEnabled="false"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -73,6 +74,7 @@
             android:backgroundTint="@color/white"
             android:drawableStart="@drawable/ic_vectoruser"
             android:drawablePadding="@dimen/margin_small"
+            android:drawableTint="@color/purple_200"
             android:fontFamily="@font/opensans_regular"
             android:hint="@string/name"
             android:inputType="text"
@@ -84,6 +86,7 @@
         android:id="@+id/til_register_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/EditTextOrange"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
@@ -101,6 +104,7 @@
             android:backgroundTint="@color/white"
             android:drawableStart="@drawable/ic_vectormail"
             android:drawablePadding="@dimen/margin_small"
+            android:drawableTint="@color/purple_200"
             android:fontFamily="@font/opensans_regular"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
@@ -112,6 +116,7 @@
         android:id="@+id/til_register_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/EditTextOrange"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
@@ -131,7 +136,7 @@
             android:backgroundTint="@color/white"
             android:drawableStart="@drawable/ic_vectorsafe"
             android:drawablePadding="@dimen/margin_medium"
-            android:fontFamily="@font/opensans_regular"
+            android:drawableTint="@color/purple_200"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:textAlignment="textStart"
@@ -139,22 +144,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--btn_register_login-->
+
+    <!--tv_register_orregisterwith-->
     <Button
+        style="@style/ButtonOrange"
         android:id="@+id/btn_register_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:backgroundTint="@color/orange_700"
-        android:paddingBottom="1dp"
         android:text="@string/register"
-        android:textColor="@color/white"
-        android:textSize="@dimen/textsize_large"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_register_password" />
 
-    <!--tv_register_orregisterwith-->
     <TextView
         android:id="@+id/tv_register_orregisterwith"
         android:layout_width="wrap_content"
@@ -197,6 +200,7 @@
 
     <Button
         android:id="@+id/iv_register_google"
+        style="@style/ButtonWhite"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -211,6 +215,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_register_orregisterwith" />
 
     <Button
+        style="@style/ButtonWhite"
         android:id="@+id/iv_register_facebook"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

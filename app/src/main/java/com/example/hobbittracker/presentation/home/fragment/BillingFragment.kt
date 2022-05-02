@@ -40,12 +40,12 @@ class BillingFragment : Fragment(), BillingProcessor.IBillingHandler {
 
         billingInit()
 
-        btn_subscribe_now.setOnClickListener {
+            /* btn_subscribe_now.setOnClickListener {
             bp.subscribe(
                 requireActivity(),
                 "android.test.purchased"
             )
-        }
+        }*/
     }
 
     override fun onDestroy() {

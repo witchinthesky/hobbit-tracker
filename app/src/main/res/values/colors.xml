@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources >
 
     // main colors
     <color name="orange_700">#FDA758</color>
@@ -20,50 +20,6 @@
     <color name="daySelectedTextColor">@android:color/white</color>
     <color name="dayDeselected">#FAFAFA</color>
     <color name="dayDeselectedTextColor">@android:color/black</color>
-
-    <!-- week selector disabled days-->
-    <color name="daySelectedAndDisabled">#43444F</color>
-    <color name="daySelectedAndDisabledTextColor">@color/daySelectedTextColor</color>
-    <color name="dayDeselectedAndDisabled">@color/dayDeselected</color>
-    <color name="dayDeselectedAndDisabledTextColor">@android:color/darker_gray</color>
-
-
-
-    <!-- TODO: temp colors for auth -->
-    <color name="colorPrimary">#1DA1D2</color>
-    <color name="colorPrimaryDark">#1DA1D2</color>
-    <color name="colorAccent">#FFBD2A</color>
-    <color name="light_grey">#B9BFC7</color>
-    <color name="light_blue">#d8f0fa</color>
-    <color name="dark_grey">#464E5B</color>
-    <color name="seventy_transparent_white">#70EAEFF6</color>
-
-    <!-- TODO: temp colors for habits -->
-    <color name="checkedTrue">#80553615</color>
-    <color name="checkedFalse">#FFFFFF</color>
-    <color name="checkedTrueTransparency">#66553615</color>
-    <drawable name="checkedTrue">#80553615</drawable>
-    <drawable name="checkedFalse">#E2E2E2</drawable>
-
-    <!-- theme colors -->
-    <color name="appGreenColor">#4C7A65</color>
-    <color name="appBackground">#F5F4F1</color>
-    <color name="barGrayColor">#E2E1DD</color>
-    <color name="textBrownColor">#847C77</color>
-
-    <!-- habit list colors -->
-    <color name="colorHabitList">#F5F3ED</color>
-    <color name="transparency">#CCFFFFFF</color>
-    <color name="dotColor">#C94F4F</color>
-    <color name="addNewHabitBackground">#D2CFC9</color>
-
-    <!-- bread level colors -->
-    <color name="breadLevel1">#1A726655</color>
-    <color name="getBreadLevel1">#AD9C82</color>
-    <color name="getBreadLevel2">#A5BCB2</color>
-    <color name="getBreadLevel3">#EFC4AB</color>
-    <color name="getBreadLevel4">#D267BB</color>
-
 
 
 </resources>

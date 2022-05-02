@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@color/white"
-    android:backgroundTint="@color/orange_200">
+    android:backgroundTint="@color/orange_200"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:background="@drawable/button_back"
-                android:backgroundTint="@color/purple_200"
+                android:backgroundTint="@color/purple_100"
                 android:padding="12dp"
                 android:src="@drawable/ic_back_icon"
                 app:layout_constraintStart_toStartOf="parent"
@@ -112,8 +112,8 @@
                     android:id="@+id/textView19"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="Habit Frequency"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -122,9 +122,9 @@
                     android:id="@+id/day_picker"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginBottom="8dp"
                     android:background="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -152,20 +152,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
             -->
 
-            <TextView
-                android:id="@+id/btn_getPremium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/orange_700"
-                android:text="Get Premium"
-                android:textSize="18sp"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/BTagName"
                 android:layout_width="0dp"
@@ -177,17 +163,17 @@
                 android:backgroundTint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_getPremium">
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
-                <!--                <TextView
-                                    android:id="@+id/tagNamedesc"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="16dp"
-                                    android:text="Category Name"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />-->
+<!--                <TextView
+                    android:id="@+id/tagNamedesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Category Name"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />-->
 
                 <Spinner
                     android:id="@+id/categorySelector"
@@ -208,10 +194,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/ic_text_field"
                 android:backgroundTint="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/btn_done"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -235,12 +223,12 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="4dp"
                     android:layout_marginBottom="4dp"
+                    app:mcv_selectionMode="single"
+                    app:mcv_showOtherDates="other_months"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/endTime"
-                    app:mcv_selectionMode="single"
-                    app:mcv_showOtherDates="other_months" />
+                    app:layout_constraintTop_toBottomOf="@+id/endTime" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -249,8 +237,7 @@
                 style="@style/Theme.Hobbittracker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="8dp"
                 android:backgroundTint="@color/orange_700"
                 android:contentDescription="@string/on_boarding01_desc"
                 app:borderWidth="0dp"
@@ -259,15 +246,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
                 app:maxImageSize="19dp"
                 app:srcCompat="@drawable/ic_done"
                 tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/displayColor"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_marginStart="32dp"
                 android:background="@drawable/ic_text_field"
                 android:backgroundTint="@color/orange_700"

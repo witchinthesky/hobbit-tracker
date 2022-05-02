@@ -56,12 +56,11 @@
                 android:backgroundTint="@color/white"
                 android:gravity="center"
                 android:paddingVertical="20dp"
-                android:text="Select monthly plan"
+                android:text="Select first Plan"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_premium_title"
-                app:shapeAppearance="@style/HabitListTheme"
                 app:strokeWidth="0dp" />
 
             <Button
@@ -76,12 +75,11 @@
                 android:backgroundTint="@color/white"
                 android:gravity="center"
                 android:paddingVertical="20dp"
-                android:text="Select yearly Plan"
+                android:text="Select second Plan"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_planPay1"
-                app:shapeAppearance="@style/HabitListTheme"
                 app:strokeWidth="0dp" />
 
             <Button
@@ -96,17 +94,16 @@
                 android:backgroundTint="@color/white"
                 android:gravity="center"
                 android:paddingVertical="20dp"
-                android:text="Select lifetime plan"
+                android:text="Select third plan"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_planPay2"
-                app:shapeAppearance="@style/HabitListTheme"
                 app:strokeWidth="0dp" />
 
             <!--  +++++++++++++++++++++++++++ -->
             <Button
-                android:id="@+id/btn_subscribe_now"
+                android:id="@+id/btn_markAsComplete"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -119,7 +116,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_planPay3"
-                app:shapeAppearance="@style/HabitListTheme"
                 app:strokeWidth="0dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -133,13 +133,13 @@ class NewHabitFragment : Fragment(), AdapterView.OnItemSelectedListener {
         categorySelector.let {
             if (!HomeViewModel.USER_VERIFIED) {
                 it.isEnabled = false
-                btn_getPremium.visibility = View.VISIBLE
+                    /*btn_getPremium.visibility = View.VISIBLE
                 btn_getPremium.setOnClickListener {
                     vm.replaceFragment(
                         requireActivity().supportFragmentManager,
                         BillingFragment()
                     )
-                }
+                }*/
             } else {
                 it.onItemSelectedListener = this
             }

@@ -184,13 +184,13 @@ class EditHabitFragment : Fragment(), AdapterView.OnItemSelectedListener {
             it.setSelection(selectedCategoryId)
             if (!HomeViewModel.USER_VERIFIED) {
                 it.isEnabled = false
-                btn_getPremium.visibility = VISIBLE
+                /*btn_getPremium.visibility = VISIBLE
                 btn_getPremium.setOnClickListener {
                     vm.replaceFragment(
                         requireActivity().supportFragmentManager,
                         BillingFragment()
-                    )
-                }
+                    )*/
+
             } else {
                 it.onItemSelectedListener = this
             }

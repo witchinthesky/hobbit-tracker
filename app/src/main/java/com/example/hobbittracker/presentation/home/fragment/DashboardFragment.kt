@@ -84,13 +84,13 @@ class DashboardFragment : Fragment() {
             listOf(category_1, category_2, category_3).forEach {
                 it.isEnabled = false
             }
-            btn_getPremium.visibility = View.VISIBLE
+                /*btn_getPremium.visibility = View.VISIBLE
             btn_getPremium.setOnClickListener {
                 vm.replaceFragment(
                     requireActivity().supportFragmentManager,
                     BillingFragment()
                 )
-            }
+            }*/
         }
     }
 
