@@ -1,3 +1,162 @@
 <resources>
     <string name="app_name">hobbit-tracker</string>
+    <string name="on_boarding01_title">WELCOME TO MONUMENTAL HABITS</string>
+    <string name="on_boarding02_title">CREATE NEW HABIT EASILY</string>
+    <string name="on_boarding03_title">KEEP TRACK OF YOUR PROGRESS</string>
+    <string name="on_boarding04_title">JOIN A SUPPORTIVE COMMUNITY</string>
+    <string name="on_boarding01_desc">We can help you to be a better version of yourself.</string>
+    <string name="next">Next</string>
+    <string name="prev">Previos</string>
+    <string name="get_started">Get Started</string>
+
+    <!-- Base -->
+    <string name="request_canceled" translatable="false">Request canceled</string>
+    <string name="reminder">Reminder</string>
+
+
+    <!-- Facebook tokens -->
+    <string name="facebook_app_id" translatable="false">759794241593209</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb759794241593209</string>
+    <string name="facebook_client_token" translatable="false">b3e64aa31e7cdd02958dfeda6aa54116</string>
+    <!-- Google token-->
+    <!--    <string name="default_web_client_id" translatable="false">413198149784-03lc0tb2lb3nofa9kq40s9ko0p4581o7.apps.googleusercontent.com</string>-->
+
+
+    <!-- Auth: Reset password -->
+    <string name="reset_password_successful">Check email to reset your password!</string>
+    <string name="forgot_password">Forgot password?</string>
+
+    <!-- Auth: Login -->
+    <string name="login_successful">Login Successful!</string>
+    <string name="login_failed">Login failed</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="login" translatable="false">Login</string>
+    <string name="or_log_in_with">Or log in with</string>
+    <string name="dont_have_an_account_yet_register_now">
+        Don\'t have an account yet? <font color="#FFBD2A"><big><b>Register Now</b></big></font>
+    </string>
+
+    <!-- Auth: Register -->
+    <string name="registration_successful">Registration successful!</string>
+    <string name="registration_failed">Registration failed</string>
+    <string name="create_account">Create Your Account</string>
+    <string name="name">Name</string>
+    <string name="register">Create Account</string>
+    <string name="or_register_with">Or sign in with</string>
+    <string name="already_have_an_account">Already have an account? <font color="#FFBD2A"><big><b>Login</b></big></font></string>
+    <string name="log_out">Log out</string>
+
+    <!-- Auth: Other -->
+    <string name="title_activity_reset_password">ResetPasswordActivity</string>
+    <string name="prompt_email" translatable="false">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be > 6 characters</string>
+    <string name="home_page">Home Page</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_habit">New Habit</string>
+    <string name="welcome_login">WELCOME TO MONUMENTAL HABITS</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="continue_with_googe">Continue with Google</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="reset_instructions">Enter your registered email below to receive password reset instruction</string>
+    <string name="all_category">All</string>
+    <string name="category1">Tag</string>
+    <string name="category2">Tag</string>
+    <string name="category3">Tag</string>
+
+
+    <!-- HOME: Add Habit -->
+    <string name="add_habit_successful">Habit successful added!</string>
+    <string name="add_habit_failed">Habit added failed!</string>
+
+    <!-- HOME: Habit List View -->
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+
+    <!-- HOME: Dashboard Fragment -->
+    <string name="categories_loading_failed">Failed loading categories</string>
+    <string name="habits_loading_failed">Failed loading habits</string>
+
+    <!-- HOME: Edit Fragment -->
+    <string name="habit_update_failed">Habit updated failed!</string>
+    <string name="habit_update_successful">Habit successful updated!</string>
+    <string name="habit_delete_failed">Habit deleted failed!</string>
+    <string name="habit_delete_successful">Habit successful deleted!</string>
+
+    <!-- HOME: Details Fragment -->
+    <string name="habit_today_completed">Today habit is completed!</string>
+    <string name="habit_today_missed">Today habit is missed!</string>
+    <string name="habit_completed">Habit is completed!</string>
+    <string name="habit_missed">Habit is missed!</string>
+    <string name="facebook" translatable="false">Facebook</string>
+    <string name="google" translatable="false">Google</string>
+    <string name="send_reset_link">Send Reset Link</string>
+    <string name="categories">Categories</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="analytics">Analytics</string>
+    <string name="longest_streak">Longest Streak</string>
+    <string name="current_streak">Current Streak</string>
+    <string name="competition_rate">Competition Rate</string>
+    <string name="average_score">Average Score</string>
+    <string name="mark_habit_as_complete">Mark Habit as Complete</string>
+    <string name="mark_habit_as_missed">Mark Habit as Missed</string>
+    <string name="delete_habit">Delete Habit</string>
+    <string name="edit_habit">Edit Habit</string>
+    <string name="habit_frequency">Habit Frequency</string>
+    <string name="notification">Notification</string>
+    <string name="category_name">Category Name</string>
+    <string name="pick_color">Pick Color</string>
+    <string name="end_date">End date</string>
+    <string name="settings">Settings</string>
+    <string name="general">General</string>
+    <string name="support">Support</string>
+    <string name="feedback">Feedback</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="about">About</string>
+
+    <!-- HOME: Notifications -->
+    <string name="reminders_notification_channel_id">Hobbit tracker Notification ID</string>
+    <string name="reminders_notification_channel_name">Hobbit tracker Notification</string>
+    <string name="title_notification_reminder">Hobbit tracker</string>
+    <string name="description_notification_reminder">Habit to do: </string>
+
+    <string name="customize_notification">Customize notification</string>
+    <string name="customize_it_more_to_fit_your_usage">Customize it more to fit your usage</string>
+
+    <string name="contact">Contact</string>
+    <string name="add_reminders">Add Reminders</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="log_in_with_email">Log in with email</string>
+
+    <!-- HOME: Validation -->
+    <string name="validate_min_length">Use at least [*] characters</string>
+    <string name="validate_max_length">Use no more than [*] characters</string>
+    <string name="validate_name_empty">Name is empty</string>
+    <string name="validate_date_empty">End Date is empty</string>
+    <string name="validate_days_empty">No day selected</string>
+    <string name="validate_empty">This is empty</string>
+
+    <!-- HOME: Settings Categories Fragment -->
+    <string name="category_update_failed">Category [*] update failed!</string>
+    <string name="create_new_habit">Create New Habit</string>
+    <string name="continue_btn">Continue</string>
+    <string name="congratulation_text">You achive a new goals</string>
+    <string name="congratulation">Congratulation</string>
+    <string name="details_is_complete">Complete</string>
+    <string name="details_is_missed">Missed</string>
+    <string name="details_is_during">In progress</string>
+    <string name="details_repeat_everyday">everyday</string>
+    <string name="details_repeat_at">Repeat at</string>
+    <string name="details_remind_dont">Don`t remind</string>
+    <string name="details_remind_at">Remind at</string>
+    <string name="on_boarding03_desc">"Track your habits and analyze progress - build motivating chains of completed habits and perfect days. "</string>
+    <string name="on_boarding04_desc">"The Productive Journey awaits "</string>
+    <string name="on_boarding02_desc">Create, complete, stop or pause your habits whenever it is convenient for you</string>
+
 </resources>
