@@ -2,8 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/ic_text_field"
-    android:backgroundTint="@color/white"
+    style="@style/bottomSheetDialogTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -60,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/nunito_bold"
-        android:text="Add Reminders"
+        android:text="@string/add_reminders"
         android:textColor="@color/purple_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +72,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/nunito_bold"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:textColor="@color/orange_700"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -85,7 +84,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="48dp"
         android:fontFamily="@font/nunito_bold"
-        android:text="Save"
+        android:text="@string/save"
         android:textColor="@color/orange_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -20,7 +20,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/category_all"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/ToggleButtonGroupStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:enabled="true"
@@ -28,21 +28,21 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/category_1"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/ToggleButtonGroupStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category1" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/category_2"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/ToggleButtonGroupStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category2" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/category_3"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/ToggleButtonGroupStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category3" />

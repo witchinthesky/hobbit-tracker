@@ -39,7 +39,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Edit Habit"
+                android:fontFamily="@font/nunito_bold"
+                android:text="@string/edit_habit"
                 android:textColor="@color/purple_700"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +58,7 @@
                 android:backgroundTint="@color/white"
                 android:minHeight="48dp"
                 android:padding="10dp"
-                android:text="New Name"
+                android:text="@string/new_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_premium_title" />
@@ -80,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Notification"
+                    android:text="@string/notification"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -115,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Habit Frequency"
+                    android:text="@string/habit_frequency"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -211,7 +212,7 @@
                     android:id="@+id/endTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="End date"
+                    android:text="@string/end_date"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -269,7 +270,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Pick Color"
+                android:text="@string/pick_color"
                 android:textColor="@color/purple_700"
                 app:layout_constraintStart_toEndOf="@+id/displayColor"
                 app:layout_constraintTop_toBottomOf="@+id/BTagName" />

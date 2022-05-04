@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">hobbit-tracker</string>
-    <string name="on_boarding01_title">WELCOME TO MONUMENTAL HABITS</string>
+    <string name="app_name" translatable="false">Hobbit Tracker</string>
+    <string name="on_boarding01_title">WELCOME TO HOBBIT TRACKER</string>
     <string name="on_boarding02_title">CREATE NEW HABIT EASILY</string>
     <string name="on_boarding03_title">KEEP TRACK OF YOUR PROGRESS</string>
     <string name="on_boarding04_title">JOIN A SUPPORTIVE COMMUNITY</string>
@@ -48,16 +48,16 @@
     <string name="log_out">Log out</string>
 
     <!-- Auth: Other -->
-    <string name="title_activity_reset_password">ResetPasswordActivity</string>
+    <string name="title_activity_reset_password" translatable="false">ResetPasswordActivity</string>
     <string name="prompt_email" translatable="false">Email</string>
-    <string name="prompt_password">Password</string>
+    <string name="prompt_password" translatable="false">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be > 6 characters</string>
     <string name="home_page">Home Page</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="new_habit">New Habit</string>
     <string name="welcome_login">WELCOME TO MONUMENTAL HABITS</string>
     <string name="continue_with_facebook">Continue with Facebook</string>
@@ -120,9 +120,9 @@
     <string name="about">About</string>
 
     <!-- HOME: Notifications -->
-    <string name="reminders_notification_channel_id">Hobbit tracker Notification ID</string>
-    <string name="reminders_notification_channel_name">Hobbit tracker Notification</string>
-    <string name="title_notification_reminder">Hobbit tracker</string>
+    <string name="reminders_notification_channel_id" translatable="false">Hobbit tracker Notification ID</string>
+    <string name="reminders_notification_channel_name" translatable="false">Hobbit tracker Notification</string>
+    <string name="title_notification_reminder">Hobbit Tracker</string>
     <string name="description_notification_reminder">Habit to do: </string>
 
     <string name="customize_notification">Customize notification</string>
@@ -146,8 +146,8 @@
     <string name="category_update_failed">Category [*] update failed!</string>
     <string name="create_new_habit">Create New Habit</string>
     <string name="continue_btn">Continue</string>
-    <string name="congratulation_text">You achive a new goals</string>
-    <string name="congratulation">Congratulation</string>
+    <string name="congratulation_text">You achieved a new goal. Goals big and small can be the stepping-stones to a happier life.</string>
+    <string name="congratulation">Congratulation!</string>
     <string name="details_is_complete">Complete</string>
     <string name="details_is_missed">Missed</string>
     <string name="details_is_during">In progress</string>
@@ -158,5 +158,7 @@
     <string name="on_boarding03_desc">"Track your habits and analyze progress - build motivating chains of completed habits and perfect days. "</string>
     <string name="on_boarding04_desc">"The Productive Journey awaits "</string>
     <string name="on_boarding02_desc">Create, complete, stop or pause your habits whenever it is convenient for you</string>
-
+    <string name="habit_name">Habit name</string>
+    <string name="notifications">Notification</string>
+    <string name="new_name">New name</string>
 </resources>

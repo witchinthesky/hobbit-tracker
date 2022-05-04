@@ -64,6 +64,7 @@
         <item name="colorAccent">@color/orange_700</item>
         <item name="background">@drawable/ic_text_field</item>
         <item name="backgroundTint">@color/toggle_buttom_selector</item>
+        <item name="android:textColor">@color/purple_700</item>
     </style>
 
 
@@ -84,4 +85,11 @@
         <item name="android:textSize">14sp</item>
 
     </style>
+
+    <!-- Bottom Sheet Dialog theme -->
+    <style name="bottomSheetDialogTheme" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">30dp</item>
+    </style>
+
 </resources>

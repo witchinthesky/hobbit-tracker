@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">hobbit-tracker</string>
-    <string name="on_boarding01_title">ВІТАЄМО В ___</string>
+    <string name="on_boarding01_title">ВІТАЄМО В  HOBBIT TRACKER</string>
     <string name="on_boarding02_title">ЛЕГКО СТВОРЮЙТЕ НОВІ ЗВИЧКИ</string>
     <string name="on_boarding03_title">ВІДСТЕЖУЙТЕ СВІЙ ПРОГРЕС</string>
     <string name="on_boarding04_title">ДОЄДНУЙТЕСЬ ДО ДРУЖНЬОГО КОМ\'ЮНІТІ</string>
@@ -77,9 +76,36 @@
     <string name="add_reminders">Додати нагадування</string>
     <string name="cancel">Відмінити</string>
     <string name="save">"Зберегти "</string>
-    <string name="log_in_with_email">Увійти</string>
+    <string name="log_in_with_email">"Увійти "</string>
     <string name="reminder">Нагадування</string>
     <string name="on_boarding03_desc">Відслідковуйте свої звички та аналізуйте прогрес</string>
     <string name="on_boarding02_desc">"Створюйте, виконуйте, зупиняйте чи призупиняйте свої звички "</string>
     <string name="on_boarding04_desc">Продуктивність чекає</string>
+    <string name="action_sign_in">Увійдіть або зареєструйтесь</string>
+    <string name="action_sign_in_short">Увійти</string>
+    <string name="invalid_username">Не валідне ім\'я користувача</string>
+    <string name="invalid_password">Ваш пароль має складатись з більше ніж 6 символів</string>
+    <string name="description_notification_reminder">"Заплановано на сьогодні: "</string>
+    <string name="title_notification_reminder">"Hobbit Tracker "</string>
+    <string name="validate_min_length">Використовуйте щонайменше [*] символів</string>
+    <string name="validate_max_length">Використовуйте не більше ніж [*] символів</string>
+    <string name="validate_name_empty">Назва не може бути пустою</string>
+    <string name="validate_date_empty">"Кінцева дата не може бути пустою "</string>
+    <string name="validate_days_empty">Ні один день не вибрано</string>
+    <string name="validate_empty">Тут пусто</string>
+    <string name="category_update_failed">Невдалось оновити категорію [*]</string>
+    <string name="create_new_habit">Створити нову звичку</string>
+    <string name="continue_btn">Продовжити</string>
+    <string name="congratulation_text">Ви досягли нової мети. Великі та малі цілі можуть стати сходинками до щасливішого життя.</string>
+    <string name="congratulation">Вітаємо!</string>
+    <string name="details_is_complete">Досягнуто</string>
+    <string name="details_is_missed">Пропущено</string>
+    <string name="details_is_during">В процесі</string>
+    <string name="details_repeat_everyday">кожного дня</string>
+    <string name="details_repeat_at">Повторювати в</string>
+    <string name="details_remind_dont">Не нагадувати</string>
+    <string name="details_remind_at">Нагадувати в</string>
+    <string name="notifications">Нагадування</string>
+    <string name="new_name">Назва</string>
+    <string name="habit_name">Назва Звички</string>
 </resources>

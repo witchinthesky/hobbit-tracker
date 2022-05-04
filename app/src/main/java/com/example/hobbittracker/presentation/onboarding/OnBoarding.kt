@@ -55,10 +55,10 @@ class OnBoarding : AppCompatActivity() {
 
         val onBoardingData:MutableList<OnBoardingData> = ArrayList()
 
-        onBoardingData.add(OnBoardingData(R.string.on_boarding01_title, R.string.on_boarding01_desc, R.drawable.ic__placeholder))
-        onBoardingData.add(OnBoardingData(R.string.on_boarding02_title, R.string.on_boarding01_desc, R.drawable.ic_habits))
-        onBoardingData.add(OnBoardingData(R.string.on_boarding03_title, R.string.on_boarding01_desc, R.drawable.ic_progress))
-        onBoardingData.add(OnBoardingData(R.string.on_boarding04_title, R.string.on_boarding01_desc, R.drawable.ic_community_support))
+        onBoardingData.add(OnBoardingData(R.string.on_boarding01_title, R.string.on_boarding01_desc, R.drawable.ic_pasted_image))
+        onBoardingData.add(OnBoardingData(R.string.on_boarding02_title, R.string.on_boarding02_desc, R.drawable.ic_habits))
+        onBoardingData.add(OnBoardingData(R.string.on_boarding03_title, R.string.on_boarding03_desc, R.drawable.ic_progress))
+        onBoardingData.add(OnBoardingData(R.string.on_boarding04_title, R.string.on_boarding04_desc, R.drawable.ic_community_support))
 
         setOnBoardingViewPagerAdapter(onBoardingData)
 
@@ -102,6 +102,11 @@ class OnBoarding : AppCompatActivity() {
                     prev!!.isVisible = false
                     getStarted!!.isVisible = true
 
+                }else{
+                    next!!.isVisible = true
+                    tabLayout!!.isVisible = true
+                    prev!!.isVisible = true
+                    getStarted!!.isVisible = false
                 }
             }
         })
